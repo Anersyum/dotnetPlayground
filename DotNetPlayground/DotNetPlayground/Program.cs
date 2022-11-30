@@ -1,5 +1,7 @@
+using DotNetPlayground.Data;
 using DotNetPlayground.Interfaces;
 using DotNetPlayground.Servisi;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +14,10 @@ builder.Services.AddSwaggerGen();
 
 //builder.Services.AddScoped<SaberiDvaBrojaServis_Z1>(); //registrovan servis
 //builder.Services.AddScoped<OduzmiPaSaberi_Z1>();
+builder.Services.AddDbContext<Baza>(config =>
+{
+    config.UseSqlite(builder.Configuration.GetConnectionString("Sqlite"));
+});
 
 builder.Services.AddScoped<IKalkulator, OduzmiPaSaberi_Z1 >();
 
