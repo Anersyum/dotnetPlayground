@@ -8,5 +8,7 @@ import { IspisiPodatkeService } from '../services/ispisi-podatke.service';
 })
 export class LoginComponent {
 
-  constructor(public _ispisServis: IspisiPodatkeService) {}
+  email: string | null = localStorage.getItem("email");
+
+  constructor() {}
 }

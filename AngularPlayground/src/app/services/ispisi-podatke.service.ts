@@ -10,11 +10,11 @@ export class IspisiPodatkeService {
 
   constructor() { }
 
-  ispisiPodatke(email: string, password: string): string {
+  ispisiPodatke(email: string, password: string) {
     alert(`Vaš email je: ${email}, vaš password je ${password}`);
     this.email = email;
     this.password = password;
 
-    return this.email;
+    localStorage.setItem("email", email);
   }
 }
