@@ -8,13 +8,18 @@ import { IspisiPodatkeService } from './services/ispisi-podatke.service';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { NavigationComponent } from './navigation/navigation.component';
+import { Zadatak1Component } from './zadatak1/zadatak1.component';
+import { Zadatak2Component } from './zadatak2/zadatak2.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
-    NavigationComponent
+    NavigationComponent,
+    Zadatak1Component,
+    Zadatak2Component,
   ],
   imports: [
     BrowserModule,

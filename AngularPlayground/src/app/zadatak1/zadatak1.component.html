@@ -1,0 +1,25 @@
+<h4>1. Kreirati servis za sabiranje i ispis</h4>
+
+<div class="container">
+  <div class="form-container">
+  <label for="broj1">Broj1: </label>
+  <input id="broj1" type="text" [(ngModel)]="userModel.broj1" placeholder="Broj"/> <br/>
+  <label for="broj2">Broj2: </label>
+  <input id="broj2" type="text" [(ngModel)]="userModel.broj2" placeholder="Broj"/> <br/>
+    <div class="button">
+      <button (click)="saberi_servis()">+</button>
+      <button (click)="oduzmi_servis()">-</button>
+      <button (click)="pomnozi_servis()">*</button>
+      <button (click)="podijeli_servis()">/</button>
+    </div>
+
+    <label for="rezultat">Rezultat: </label>
+  <input id="rezultat" type="text" [(ngModel)]="userModel.rezultat" placeholder="Rezultat">
+  </div>
+</div>
+
+
+
+
+
+
