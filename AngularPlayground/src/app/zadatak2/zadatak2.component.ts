@@ -11,6 +11,4 @@ export class Zadatak2Component {
 
   constructor() {
   }
-
-
 }
