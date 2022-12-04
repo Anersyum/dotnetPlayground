@@ -17,7 +17,7 @@ export class ServisiZadatak1Service {
   // u svakoj metodi je promijenjeno sa field this.rezultat na lokalnu varijablu rezultat jer nema potrebe za setanjem
   // field-a u ovom servisu (za neke druge potrebe bi možda imalo smisla). Field na koji mislim je označen sa #1
   // isto tako nema potrebe ni za broj1 i broj2 field-ovima jer te brojeve dobijamo od komponente
-  saberiDvaBroja(broj1: string, broj2:string){
+  saberiDvaBroja(broj1: string, broj2: string){
     const rezultat: number = parseInt(broj1) + parseInt(broj2);
     alert(`Rezultat je: ${rezultat}`); // ovaj alert i ne treba ako već praviš kalkulator
 

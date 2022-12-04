@@ -12,11 +12,50 @@ export class Zadatak1Component {
     broj1:"",
     broj2:"",
     rezultat:0,
-    matematickaOperacija: "" // obzirom da se ova varijabla nigdje ne koristi, ne treba je ni kreirati
+    matematickaOperacija: "+" // obzirom da se ova varijabla nigdje ne koristi, ne treba je ni kreirati
   };
 
+  opcije = [
+    {
+      valueMember: "+",
+      displayMember: "Sabiranje"
+    },
+    {
+      valueMember: "-",
+      displayMember: "Oduzimanje"
+    },
+    {
+      valueMember: "*",
+      displayMember: "Množenje"
+    },
+    {
+      valueMember: "/",
+      displayMember: "Dijeljenje"
+    }
+  ]
   constructor(private _izracunajServis: ServisiZadatak1Service) {
   }
+
+  kalkulisi() {
+    // alert(this.userModel.matematickaOperacija);
+    switch (this.userModel.matematickaOperacija) {
+      case "+":
+        this.saberi()
+        break;
+      case "-":
+        this.oduzmi();
+        break;
+      case "*":
+          this.pomnozi();
+        break;
+      case "/":
+        this.podijeli();
+        break;
+      default:
+        break;
+    }
+  }
+
   saberi() {
     this.userModel.rezultat = this._izracunajServis.saberiDvaBroja(this.userModel.broj1, this.userModel.broj2);
   }

@@ -6,9 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./zadatak2.component.scss']
 })
 export class Zadatak2Component {
-  rezultat: string | null=localStorage.getItem("rezultat");
+  rezultat: string | null;
 
 
   constructor() {
+    this.rezultat = localStorage.getItem("rezultat");
   }
 }
