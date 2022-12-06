@@ -1,1 +1,11 @@
 <p>Mail: {{ email }}</p>
+
+<div class="button-container">
+  <button (click)="setAccessToProfile(true)">Press to gain access to the profile link</button>
+  <button (click)="setAccessToProfile(false)">Press to remove access to the profile link</button>
+
+  <button (click)="goToProfile()">Go to profile</button>
+  <button (click)="goToProfileWithParams()">Go to profile with params</button>
+
+  <button (click)="getCurrentNavigation()">Current link</button>
+</div>

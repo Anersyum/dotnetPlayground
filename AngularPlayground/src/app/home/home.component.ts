@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { IspisiPodatkeService } from '../services/ispisi-podatke.service';
 
@@ -8,7 +8,7 @@ import { IspisiPodatkeService } from '../services/ispisi-podatke.service';
   styleUrls: ['./home.component.scss']
 })
 
-export class HomeComponent {
+export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   prikaziLogin: boolean = false;
   userModel = {
@@ -43,6 +43,18 @@ export class HomeComponent {
   //   this._ispisServis = _ispisServis;
   // }
   constructor(private _ispisServis: IspisiPodatkeService) {}
+
+  ngOnDestroy(): void {
+    alert("Uništeno")
+  }
+
+  ngAfterViewInit(): void {
+    alert("After view")
+  }
+
+  ngOnInit(): void {
+    alert("Inicijalizacija");
+  }
 
   // ispis(email: HTMLInputElement, password: HTMLInputElement) {
   //   this._ispisServis.ispisiPodatke(email.value, password.value);
