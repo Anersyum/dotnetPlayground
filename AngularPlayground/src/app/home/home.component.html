@@ -8,12 +8,26 @@
   </div>
 </div> -->
 
-<div class="container">
+<div class="checkbox-container">
+  <label for="">Prikazi login</label>
+  <input #checkbox type="checkbox" (change)="aktivirajLogin(checkbox)">
+</div>
+
+<div class="container" *ngIf="prikaziLogin">
   <div class="form-container">
     <label for="user_email">Email:</label>
-    <input id="user_email" type="text" placeholder="Unesi mail" [(ngModel)]="userModel.mail"/>
+    <input id="user_email" type="text" placeholder="Unesi mail" [(ngModel)]="userModel.mail" />
     <label for="user_password">Password</label>
-    <input id="user_password" type="text" placeholder="Unesi password" [(ngModel)]="userModel.password"/>
-    <button (click)="ispis()">Send</button>
+    <input id="user_password" type="text" placeholder="Unesi password" [(ngModel)]="userModel.password" />
+    <!-- <button (click)="ispis()" [ngClass]="{'active': prikaziLogin}" >Send</button> -->
+    <button (click)="ispis()" >Send</button>
   </div>
+</div>
+
+<div *ngFor="let text of textCollection" [ngClass]="{'active': prikaziLogin}">
+  <div>{{ text }}</div>
+</div>
+
+<div *ngFor="let obj of objectCollection">
+  <div>{{ obj.name }} {{ obj.surname }}</div>
 </div>

@@ -10,10 +10,34 @@ import { IspisiPodatkeService } from '../services/ispisi-podatke.service';
 
 export class HomeComponent {
 
+  prikaziLogin: boolean = false;
   userModel = {
     mail: "",
     password: "",
   };
+  textCollection: Array<string>= [
+    "Sara",
+    "Amor",
+    "Ines",
+    "Jasko",
+    "Miška"
+  ];
+
+  objectCollection = [
+    {
+      name: "Amor",
+      surname: "osmic"
+    },
+    {
+      name: "Sara",
+      surname: "Šahinpašić"
+    },
+    {
+      name: "Miška",
+      surname: "Miškić"
+    }
+  ];
+
   // private _ispisServis: IspisiPodatkeService;
   // constructor(_ispisServis: IspisiPodatkeService) {
   //   this._ispisServis = _ispisServis;
@@ -26,5 +50,13 @@ export class HomeComponent {
 
   ispis() {
     this._ispisServis.ispisiPodatke(this.userModel.mail, this.userModel.password);
+  }
+
+  aktivirajLogin(checkbox: HTMLInputElement) {
+    this.prikaziLogin = checkbox.checked;
+  }
+
+  test() {
+    alert(this.userModel.mail)
   }
 }

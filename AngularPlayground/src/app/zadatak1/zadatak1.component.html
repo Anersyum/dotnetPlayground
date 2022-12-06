@@ -7,12 +7,25 @@
   <label for="broj2">Broj2: </label>
   <input id="broj2" type="text" [(ngModel)]="userModel.broj2" placeholder="Broj"/> <br/>
     <div class="button">
-      <button (click)="saberi_servis()">+</button>
-      <button (click)="oduzmi_servis()">-</button>
-      <button (click)="pomnozi_servis()">*</button>
-      <button (click)="podijeli_servis()">/</button>
+      <!-- sve metode koje imaju _servis su zamjenjene metodama koji to nemaju jer nema smisla obzirom da
+      servis metoda postoji samo unutar servisa, a ne unutar komponente -->
+      <!-- <button (click)="saberi()">+</button>
+      <button (click)="oduzmi()">-</button>
+      <button (click)="pomnozi()">*</button>
+      <button (click)="podijeli()">/</button> -->
+      <!-- <select [(ngModel)]="userModel.matematickaOperacija">
+        <option value="+">Sabiranje</option>
+        <option value="-">Odzuimanje</option>
+        <option value="*">Množenje</option>
+        <option value="/">/</option>
+      </select> -->
+
+      <select [(ngModel)]="userModel.matematickaOperacija">
+        <option *ngFor="let opcija of opcije" value="{{ opcija.valueMember }}">{{ opcija.displayMember }}</option>
+      </select>
     </div>
 
+    <button (click)="kalkulisi()">Kalkulisi</button>
     <label for="rezultat">Rezultat: </label>
   <input id="rezultat" type="text" [(ngModel)]="userModel.rezultat" placeholder="Rezultat">
   </div>
