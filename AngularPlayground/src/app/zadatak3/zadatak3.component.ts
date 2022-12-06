@@ -27,8 +27,8 @@ export class Zadatak3Component implements OnInit {
 
   uneseniTekst:string="";
   getInputValue(value: string){
-    this.uneseniTekst=value;
-    this._upperCaseSevice.pretvoriUneseniText((this.uneseniTekst));
+    //this.uneseniTekst=value;
+    this._upperCaseSevice.pretvoriUneseniText((value));
   }
 
 

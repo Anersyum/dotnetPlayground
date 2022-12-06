@@ -3,7 +3,6 @@
   Priprema:
     Pripremio sam user service koji uzima sa API-a neke dummy user podatke (ti podaci se generišu kada pokreneš
     dotnet API).
-    ==>  prilikom testiranja na Swagger-u: GET/useres vraća error: "Microsoft.Data.Sqlite.SqliteException: 'SQLite Error 1: 'no such table: Users'.'"
 
     Unutar Angulara sam pripremio model objekat zbog mapiranja podataka i da imaš uvid šta API vrati (nalazi se
     unutar models foldera).
@@ -47,9 +46,8 @@
 </table>
 </div>
 
-<div *ngFor="let user of users " [ngClass]="{'active':prikaziPodatke}">
-
-</div>
+<!--<div *ngFor="let user of users " [ngClass]="{'active':prikaziPodatke}">
+</div>-->
 
 <!--c)-->
 <br/>
