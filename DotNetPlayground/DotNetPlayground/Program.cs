@@ -14,12 +14,13 @@ builder.Services.AddSwaggerGen();
 
 //builder.Services.AddScoped<SaberiDvaBrojaServis_Z1>(); //registrovan servis
 //builder.Services.AddScoped<OduzmiPaSaberi_Z1>();
+
 builder.Services.AddDbContext<Baza>(config =>
 {
     config.UseSqlite(builder.Configuration.GetConnectionString("Sqlite"));
 });
 
-builder.Services.AddScoped<IKalkulator, OduzmiPaSaberi_Z1 >();
+builder.Services.AddScoped<IKalkulator_Z1, OduzmiPaSaberi_Z1 >();
 
 var app = builder.Build();
 

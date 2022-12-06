@@ -57,7 +57,7 @@ namespace DotNetPlayground.Controllers
         }
 
         [HttpPost("/ServisSaberi")]
-        public int ServisSaberi(Saberi_Z1 broj, [FromServices]IKalkulator servisSaberi)
+        public int ServisSaberi(Saberi_Z1 broj, [FromServices]IKalkulator_Z1 servisSaberi)
         {
             return servisSaberi.kalkulisi(broj);
         }
