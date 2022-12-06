@@ -10,7 +10,7 @@ public class Baza : DbContext
 
     public Baza(DbContextOptions<Baza> options) : base(options) 
     {
-        // za upis dummy podataka u bazu 
+        //// za upis dummy podataka u bazu 
         if (Users!.ToList().Count > 0)
             return;
 
