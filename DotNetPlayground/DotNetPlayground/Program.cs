@@ -28,10 +28,10 @@ builder.Services.AddSwaggerGen();
 
 //builder.Services.AddScoped<SaberiDvaBrojaServis_Z1>(); //registrovan servis
 //builder.Services.AddScoped<OduzmiPaSaberi_Z1>();
-<<<<<<< HEAD
-=======
+//<<<<<<< HEAD
+//=======
 builder.Services.AddScoped<IUserRepository, UserRepository>();
->>>>>>> 6fefbc87084fd890c652f4525492dbd7558dd5d3
+//>>>>>>> 6fefbc87084fd890c652f4525492dbd7558dd5d3
 
 builder.Services.AddDbContext<Baza>(config =>
 {

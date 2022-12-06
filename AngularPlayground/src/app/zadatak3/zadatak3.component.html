@@ -3,22 +3,61 @@
   Priprema:
     Pripremio sam user service koji uzima sa API-a neke dummy user podatke (ti podaci se generišu kada pokreneš
     dotnet API).
+    ==>  prilikom testiranja na Swagger-u: GET/useres vraća error: "Microsoft.Data.Sqlite.SqliteException: 'SQLite Error 1: 'no such table: Users'.'"
+
     Unutar Angulara sam pripremio model objekat zbog mapiranja podataka i da imaš uvid šta API vrati (nalazi se
     unutar models foldera).
+
     Unutar Zadatak3 komponente sam namjestio da se podaci sa API-a upišu unutar users varijable tako da tu
     varijablu možeš koristiti za ovaj zadatak.
 
     Kada pull-aš kod, odradi migraciju i update baze podataka te onda pokreni dotnet app.
 
   Zadatak:
-    Iskoristiti users varijablju i napraviti tabelaran prikaz svih podataka koji se nalaze na UserModel-u
+    a) Iskoristiti users varijablju i napraviti tabelaran prikaz svih podataka koji se nalaze na UserModel-u
 
-    Napraviti checkbox (ili bilo koji drugi element koji može vratiti bool vrijednost) koji prikazuje ili
+    b) Napraviti checkbox (ili bilo koji drugi element koji može vratiti bool vrijednost) koji prikazuje ili
     sakriva tabelu
 
-    Napraviti servis koji će primiti neki tekst iz input-a i pretvoriti ga u uppercase i prikazati ga
+    c) Napraviti servis koji će primiti neki tekst iz input-a i pretvoriti ga u uppercase i prikazati ga
 -->
+<!--a && b-->
+<div class="check-box container">
+  <label>Prikaži tabelu</label>
+  <input #checkBox type="checkbox" (change)="prikaziTabelu(checkBox)">
+</div>
 
-<p>
-  zadatak3 works!
-</p>
+<!--Tabela:-->
+<div class="container" *ngIf="prikaziPodatke">
+<table class="table table-dark">
+  <tr>
+    <th>Id</th>
+    <th>First name</th>
+    <th>Last name</th>
+    <th>Favourite food</th>
+  </tr>
+  <tbody>
+  <tr *ngFor="let x of users">
+    <td>{{x.id}}</td>
+    <td>{{x.firstName}}</td>
+    <td>{{x.lastName}}</td>
+    <td>{{x.favouriteFood}}</td>
+  </tr>
+  </tbody>
+</table>
+</div>
+
+<div *ngFor="let user of users " [ngClass]="{'active':prikaziPodatke}">
+
+</div>
+
+<!--c)-->
+<br/>
+<label>Unesi text: </label>
+<input #uneseniText type="text" placeholder="Text">
+<button (click)="getInputValue(uneseniText.value)">Velika slova</button>
+<p></p>
+
+
+
+
