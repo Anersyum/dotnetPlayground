@@ -13,6 +13,7 @@ import { Zadatak1Component } from './zadatak1/zadatak1.component';
 import { Zadatak2Component } from './zadatak2/zadatak2.component';
 import { Zadatak3Component } from './zadatak3/zadatak3.component';
 import { ProfileComponent } from './profile/profile.component';
+import { Zadatak4Component } from './zadatak4/zadatak4.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { ProfileComponent } from './profile/profile.component';
     Zadatak1Component,
     Zadatak2Component,
     Zadatak3Component,
-    ProfileComponent
+    ProfileComponent,
+    Zadatak4Component
   ],
   imports: [
     BrowserModule,

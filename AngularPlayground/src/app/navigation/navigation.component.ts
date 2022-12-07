@@ -10,5 +10,5 @@ import { routes } from '../app-routing.module';
 })
 
 export class NavigationComponent {
-  routes: Routes = routes.filter(x => x.title); // copy and reverse and filter
+  routes: Routes = routes.copyWithin(0, 0).filter(x => x.title).reverse(); // copy and reverse and filter
 }

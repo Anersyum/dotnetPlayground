@@ -7,8 +7,10 @@ import { ProfileComponent } from './profile/profile.component';
 import { Zadatak1Component } from "./zadatak1/zadatak1.component";
 import { Zadatak2Component } from "./zadatak2/zadatak2.component";
 import { Zadatak3Component } from './zadatak3/zadatak3.component';
+import { Zadatak4Component } from './zadatak4/zadatak4.component';
 
 export const routes: Routes = [
+  { path: "zadatak4", component: Zadatak4Component, title: "Zadatak 4" },
   { path: "zadatak3", component: Zadatak3Component, title: "Zadatak 3" },
   { path: "zadatak2", component: Zadatak2Component, title: "Zadatak 2" },
   { path: "zadatak1", component: Zadatak1Component, title: "Zadatak 1" },
