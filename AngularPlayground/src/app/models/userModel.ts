@@ -1,6 +1,6 @@
 export interface UserModel {
-  id: number,
-  firstName: string,
-  lastName: string,
-  favouriteFood: string
+  id?: number,
+  firstName?: string,
+  lastName?: string,
+  favouriteFood?: string
 }
