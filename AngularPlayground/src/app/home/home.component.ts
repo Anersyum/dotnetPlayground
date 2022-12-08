@@ -11,6 +11,9 @@ import { IspisiPodatkeService } from '../services/ispisi-podatke.service';
 export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   prikaziLogin: boolean = false;
+  imageUrl: string = "https://www.thespruceeats.com/thmb/sWPNQ7OwAJFbtTwUWZYCtvhKgCk=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/traditional-yugoslavian-rolled-burek-borek-recipe-1805900-hero-01-4e70014f61424bc0baf537e462860968.jpg";
+  imageHeight: number = 300;
+  imageWidth: number = 500;
   userModel = {
     mail: "",
     password: "",
@@ -42,7 +45,9 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   // constructor(_ispisServis: IspisiPodatkeService) {
   //   this._ispisServis = _ispisServis;
   // }
-  constructor(private _ispisServis: IspisiPodatkeService) {}
+  constructor(private _ispisServis: IspisiPodatkeService) {
+    alert("Konstruktor home")
+  }
 
   ngOnDestroy(): void {
     alert("Uništeno")

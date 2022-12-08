@@ -24,6 +24,9 @@
   </div>
 </div>
 
+<img [src]="imageUrl" [height]="imageHeight"  [width]="imageWidth" />
+<button (click)="imageHeight = 1000" style="background-color: purple;">Promijeni veličinu</button>
+
 <div *ngFor="let text of textCollection" [ngClass]="{'active': prikaziLogin}">
   <div>{{ text }}</div>
 </div>

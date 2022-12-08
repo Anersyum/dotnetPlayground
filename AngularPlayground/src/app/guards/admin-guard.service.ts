@@ -8,7 +8,7 @@ import {Observable} from 'rxjs';
 
 export class AdminGuard implements CanActivate {
 
-  constructor(private router: Router) { //zasto??
+  constructor() { //zasto??
   }
 
   canActivate(): boolean {

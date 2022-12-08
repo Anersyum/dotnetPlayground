@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ProfileGuardGuard implements CanActivate {
 
-  constructor(private router: Router) {}
+  constructor() {}
 
   canActivate(): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     const canActivate: boolean = localStorage.getItem("logedIn") == "true";

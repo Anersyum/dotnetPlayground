@@ -29,3 +29,61 @@
 <h3>Gurads</h3>
 <button (click)="dodijeliPristupAdmin(true)">Odobri ovlaštenje</button>
 <button (click)="dodijeliPristupAdmin(false)">Onemogući ovlaštenje</button>
+
+<h3>Bindings</h3>
+<img [src]="imageUrl" [height]="imageHeight"  [width]="imageWidth" />
+<button (click)="imageHeight = 1000" [style]="showInlineStyle ? 'background-color: green' : styleFromComponent">
+  Promijeni veličinu
+</button>
+<button (click)="showInlineStyle = !showInlineStyle">Switch button background color</button>
+<button (click)="imageUrl = 'https://thepizzashop.ca/wp-content/uploads/2021/10/pizza-napolitaine.jpg'">Switch image</button>
+<button (click)="activateColor = !activateColor">Switch color container color</button>
+
+<input type="text" (keypress)="showValue($event)" placeholder="Bez event filtering">
+<input #input type="text" (keyup.enter)="showValueEventFiltering(input)" placeholder="Sa event filtering">
+
+<div class="color-container" [class.color]="activateColor">
+  <div *ngFor="let color of colors" [style.backgroudColor]="color" class="round"></div>
+  <!-- <div *ngFor="let color of colors" [style]="'background-color:' + color" class="round"></div> -->
+</div>
+<div (click)="showMessage('Ja sam glavni div')">
+  <div (click)="showMessage('Ja sam drugi div')" style="width: 200opx; border: 1px solid black">
+    <button (click)="showMessageNoBubbling($event, 'Ja sam dugme')">Klikni me za bublanje</button>
+  </div>
+</div>
+
+<table border="1">
+  <tr>
+    <td [colSpan]="2">Dvije kolone</td>
+    <td>Treća kolona</td>
+  </tr>
+  <tr>
+    <td>Kolona 1</td>
+    <td>Kolona 2</td>
+    <td>Kolona 3</td>
+  </tr>
+</table>
+
+<!-- <div *ngFor="let vrijednost of nizVrijednosti" style="border: 1px solid black; margin-left: 100px; margin-bottom: 100px;">
+  <p *ngIf="vrijednost > 10">{{ vrijednost }}</p>
+</div> -->
+<div style="border: 1px solid black; margin-left: 100px; margin-bottom: 100px;">
+  <ng-container *ngFor="let vrijednost of nizVrijednosti">
+    <p *ngIf="vrijednost > 10">{{ vrijednost }}</p>
+  </ng-container>
+</div>
+
+<ng-container [ngTemplateOutlet]="tpl"></ng-container>
+<ng-container *ngTemplateOutlet="tplVariable;  context: {$implicit: 'Poruka!'}"></ng-container>
+
+<ng-template #tpl>
+  <div>Zdravo iz template-a</div>
+</ng-template>
+
+<ng-template #tplVariable let-text>
+  <div>Upisan text: {{ text }}</div>
+</ng-template>
+
+<p>{{ "ja sam napisan malim slovima" | uppercase | lowercase }}</p>
+<p>{{ "2022-12-18" | date }}</p>
+<p style="margin-left: 10px;">{{ 2.5 | currency }}</p>

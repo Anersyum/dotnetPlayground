@@ -1,0 +1,16 @@
+.color-container {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+
+  .round {
+    border-radius: 100%;
+    height: 50px;
+    width: 50px;
+    margin-left: 10px;
+  }
+}
+
+.color {
+  background-color: black;
+}
