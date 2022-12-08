@@ -14,6 +14,8 @@ import { Zadatak2Component } from './zadatak2/zadatak2.component';
 import { Zadatak3Component } from './zadatak3/zadatak3.component';
 import { ProfileComponent } from './profile/profile.component';
 import { Zadatak4Component } from './zadatak4/zadatak4.component';
+import { AdminComponent } from './admin/admin.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import { Zadatak4Component } from './zadatak4/zadatak4.component';
     Zadatak2Component,
     Zadatak3Component,
     ProfileComponent,
-    Zadatak4Component
+    Zadatak4Component,
+    AdminComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
