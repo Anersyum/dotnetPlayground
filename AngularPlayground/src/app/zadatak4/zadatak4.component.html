@@ -9,11 +9,11 @@
   Napraviti i dugme kojim se oduzima to isto ovlaštenje.
   Ovlaštenje se mora postaviti preko servisa.
 
-  ===> Kada korisnik dobije ovlaštenje, prebaciti korisnika na admin rutu.
+  Kada korisnik dobije ovlaštenje, prebaciti korisnika na admin rutu.
 
   Napraviti model Maca te
-  ===> inicijalizirati taj model unutar ove komponente i
-  ===> ispisati inicijalizirane vrijednosti unutar HTML-a.
+  inicijalizirati taj model unutar ove komponente i
+  ispisati inicijalizirane vrijednosti unutar HTML-a.
 
   Napraviti komponentu 404PageNotFound i napisati unutra tekst koji govori
   kako stranica ne postoji te tu
@@ -43,7 +43,7 @@
 <input #input type="text" (keyup.enter)="showValueEventFiltering(input)" placeholder="Sa event filtering">
 
 <div class="color-container" [class.color]="activateColor">
-  <div *ngFor="let color of colors" [style.backgroudColor]="color" class="round"></div>
+  <div *ngFor="let color of colors" [style.backgroundColor]="color" class="round"></div>
   <!-- <div *ngFor="let color of colors" [style]="'background-color:' + color" class="round"></div> -->
 </div>
 <div (click)="showMessage('Ja sam glavni div')">
@@ -87,3 +87,9 @@
 <p>{{ "ja sam napisan malim slovima" | uppercase | lowercase }}</p>
 <p>{{ "2022-12-18" | date }}</p>
 <p style="margin-left: 10px;">{{ 2.5 | currency }}</p>
+<div>
+  <p *ngFor="let x of mace">
+    {{x.ime}} {{x.boja}}
+  </p>
+  <p>{{korisnik.firstName}}</p>
+</div>

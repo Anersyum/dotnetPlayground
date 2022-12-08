@@ -1,7 +1,7 @@
 export interface MacaModel{
   ime: string,
-  rasa: string,
-  godine: number
+  rasa?: string,
+  godine?: number
   boja: string
-  naStanju: boolean
+  naStanju?: boolean
 }

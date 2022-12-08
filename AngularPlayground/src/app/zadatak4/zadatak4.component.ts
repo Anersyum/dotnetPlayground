@@ -1,14 +1,15 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {GuardsService} from "../services/guards.service";
-import {MacaModel} from"../models/macaModel"
+import {MacaModel} from "../models/macaModel"
+import {UserModel} from "../models/userModel"
 
 @Component({
   selector: 'app-zadatak4',
   templateUrl: './zadatak4.component.html',
   styleUrls: ['./zadatak4.component.scss']
 })
-export class Zadatak4Component implements OnInit{
+export class Zadatak4Component implements OnInit {
 
   imageUrl: string = "https://www.thespruceeats.com/thmb/sWPNQ7OwAJFbtTwUWZYCtvhKgCk=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/traditional-yugoslavian-rolled-burek-borek-recipe-1805900-hero-01-4e70014f61424bc0baf537e462860968.jpg";
   imageHeight: number = 300;
@@ -43,9 +44,24 @@ export class Zadatak4Component implements OnInit{
     this.guradsServis.dodijeliPristupAdmin((odobriPristup));
   }
 
+  maca!: MacaModel;
+  mace: Array<MacaModel> = [];
+  korisnik!: UserModel;
+
+
   ngOnInit(): void {
-
-
+    this.maca = {
+      ime: "maca1",
+      boja: "zelena"
+    };
+    //array
+    this.mace.push({
+      ime: "maca2", boja: "boja2"
+    }, {
+      ime: "maca3", boja: "boja2"
+    },
+    this.maca);
+    this.korisnik = {firstName:"Macaa"};
   }
 
   showValue($event: KeyboardEvent) {
@@ -66,6 +82,4 @@ export class Zadatak4Component implements OnInit{
     $event.stopPropagation();
     this.showMessage(message);
   }
-
-
 }
