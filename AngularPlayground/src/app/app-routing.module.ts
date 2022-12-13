@@ -12,8 +12,8 @@ import {AdminComponent} from "./admin/admin.component";
 import {AdminGuard} from "./guards/admin-guard.service";
 import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
 
-export const routes: Routes = [
-  {path:"admin", component:AdminComponent, title:"Admin-Zadatak 4,", canActivate:[AdminGuard]},
+const oldRoutes = [
+  { path:"admin", component:AdminComponent, title:"Admin-Zadatak 4,", canActivate:[AdminGuard] },
   { path: "zadatak4", component: Zadatak4Component, title: "Zadatak 4" },
   { path: "zadatak3", component: Zadatak3Component, title: "Zadatak 3" },
   { path: "zadatak2", component: Zadatak2Component, title: "Zadatak 2" },
@@ -21,8 +21,12 @@ export const routes: Routes = [
   { path: "profile", component: ProfileComponent, title: "Profile", canActivate: [ProfileGuardGuard] },
   { path: "login", component: LoginComponent, title: "Login" },
   { path: "", component: HomeComponent, title: "Home" },
+]
+
+export const routes: Routes = [
   { path: "**", component: PageNotFoundComponent }, //WildCard
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -16,6 +16,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { Zadatak4Component } from './zadatak4/zadatak4.component';
 import { AdminComponent } from './admin/admin.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ProjectNavigationComponent } from './HomeProject/project-navigation/project-navigation.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     ProfileComponent,
     Zadatak4Component,
     AdminComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ProjectNavigationComponent
   ],
   imports: [
     BrowserModule,
