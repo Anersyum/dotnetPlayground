@@ -1,0 +1,15 @@
+<p>vjezbe-jedan works!</p>
+
+<label>Broj 1</label>
+<input type="number" placeholder="Unesi broj" [(ngModel)]="brojevi.broj1">
+<br/>
+<button (click)="saberi()">Saberi</button> <br/>
+<button (click)="oduzmi()">Oduzmi</button> <br/>
+<button (click)="pomnozi()">Pomnozi</button> <br/>
+<button (click)="podijeli()">Podijeli</button> <br/>
+
+<label>Broj 2</label>
+<input type="number" placeholder="Unesi broj" [(ngModel)]="brojevi.broj2">
+<br/>
+<label>Rezultat</label>
+<input type="number" disabled  [(ngModel)]="brojevi.rezultat">

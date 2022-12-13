@@ -1,3 +1,4 @@
+import { VjezbeJedanComponent } from './vjezbe_13.12/vjezbe-jedan/vjezbe-jedan.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProfileGuardGuard } from './guards/profile-guard.guard';
@@ -24,6 +25,7 @@ const oldRoutes = [
 ]
 
 export const routes: Routes = [
+  { path: "vjezbe-jedan", component: VjezbeJedanComponent, title:"Vjezbe 1" }, //WildCard
   { path: "**", component: PageNotFoundComponent }, //WildCard
 ];
 
