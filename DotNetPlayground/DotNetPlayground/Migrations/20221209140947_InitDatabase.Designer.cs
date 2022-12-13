@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DotNetPlayground.Migrations
 {
     [DbContext(typeof(Baza))]
-    [Migration("20221205080838_AddedUserModel")]
-    partial class AddedUserModel
+    [Migration("20221209140947_InitDatabase")]
+    partial class InitDatabase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -60,6 +60,36 @@ namespace DotNetPlayground.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            FavouriteFood = "Krompir",
+                            FirstName = "Amor",
+                            LastName = "Osmić"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            FavouriteFood = "Pizza",
+                            FirstName = "Sara",
+                            LastName = "Šahinpašić"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            FavouriteFood = "Špagete",
+                            FirstName = "Ines",
+                            LastName = "Osmić"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            FavouriteFood = "Burek",
+                            FirstName = "Jasko",
+                            LastName = "Kreho"
+                        });
                 });
 #pragma warning restore 612, 618
         }

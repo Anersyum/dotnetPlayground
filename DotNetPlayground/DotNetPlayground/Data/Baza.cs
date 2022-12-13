@@ -10,37 +10,45 @@ public class Baza : DbContext
 
     public Baza(DbContextOptions<Baza> options) : base(options) 
     {
-        //// za upis dummy podataka u bazu 
-        if (Users!.ToList().Count > 0)
-            return;
+    }
 
-        Users!.AddRange(
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+
+        List<User> users = new()
+        {
             new User
             {
+                Id = 1,
                 FirstName = "Amor",
                 LastName = "Osmić",
                 FavouriteFood = "Krompir"
             },
             new User
             {
+                Id = 2,
                 FirstName = "Sara",
                 LastName = "Šahinpašić",
                 FavouriteFood = "Pizza"
             },
             new User
             {
+                Id = 3,
                 FirstName = "Ines",
                 LastName = "Osmić",
                 FavouriteFood = "Špagete"
             },
             new User
             {
+                Id = 4,
                 FirstName = "Jasko",
                 LastName = "Kreho",
                 FavouriteFood = "Burek"
             }
-        );
+        };
 
-        this.SaveChanges();
+        modelBuilder.Entity<User>()
+            .HasData(users);
     }
 }

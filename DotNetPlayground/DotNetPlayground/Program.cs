@@ -1,5 +1,6 @@
 ﻿using DotNetPlayground.Data;
 using DotNetPlayground.Interfaces;
+using DotNetPlayground.Middleware;
 using DotNetPlayground.Models;
 using DotNetPlayground.Repositories;
 using DotNetPlayground.Servisi;
@@ -30,7 +31,7 @@ builder.Services.AddSwaggerGen();
 //builder.Services.AddScoped<OduzmiPaSaberi_Z1>();
 //<<<<<<< HEAD
 //=======
-builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepositoryNew>();
 //>>>>>>> 6fefbc87084fd890c652f4525492dbd7558dd5d3
 
 builder.Services.AddDbContext<Baza>(config =>
@@ -39,7 +40,6 @@ builder.Services.AddDbContext<Baza>(config =>
 });
 
 builder.Services.AddScoped<IKalkulator_Z1, OduzmiPaSaberi_Z1 >();
-
 
 var app = builder.Build();
 
@@ -50,8 +50,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseCors("allowAngularLocalHost");
+app.UseMiddleware<ExampleMiddleware>();
 
+app.UseCors("allowAngularLocalHost");
+app.UseExceptionHandler("/error");
 //app.UseHttpsRedirection();
 
 app.UseAuthorization();

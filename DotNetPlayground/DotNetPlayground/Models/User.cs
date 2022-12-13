@@ -1,8 +1,11 @@
-﻿namespace DotNetPlayground.Models;
+﻿using System.ComponentModel.DataAnnotations;
 
-public class User
+namespace DotNetPlayground.Models;
+
+public sealed class User
 {
     public int Id { get; set; }
+    [Required]
     public string FirstName { get; set; } = "";
     public string LastName { get; set; } = "";
     public string FavouriteFood { get; set; } = ""; 
