@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="form-container">
+    <label for="username">Username:</label>
+    <input #username type="text" placeholder="username" (keyup)="getValueUsername(username.value)">
+    <br />
+
+    <label for="password">Password:</label>
+    <input #password type="text" placeholder="password" (keyup)="getValuePassword(password.value)"/> <br />
+
+
+    <button (click)="logIn(true)">Login</button>
+  </div>
+</div>

@@ -18,10 +18,16 @@ import { AdminComponent } from './admin/admin.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ProjectNavigationComponent } from './HomeProject/project-navigation/project-navigation.component';
 import { VjezbeJedanComponent } from './vjezbe_13.12/vjezbe-jedan/vjezbe-jedan.component';
+import { HomeTabComponent } from './HomeProject/components/home-tab/home-tab.component';
+import { KreiranjeVozilaTabComponent } from './HomeProject/components/kreiranje-vozila-tab/kreiranje-vozila-tab.component';
+import { ListaVozilaTabComponent } from './HomeProject/components/lista-vozila-tab/lista-vozila-tab.component';
 
 
 @NgModule({
   declarations: [
+    HomeTabComponent,
+    KreiranjeVozilaTabComponent,
+    ListaVozilaTabComponent,
     AppComponent,
     HomeComponent,
     LoginComponent,
@@ -37,6 +43,7 @@ import { VjezbeJedanComponent } from './vjezbe_13.12/vjezbe-jedan/vjezbe-jedan.c
     VjezbeJedanComponent
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,

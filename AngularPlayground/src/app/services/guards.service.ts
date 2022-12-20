@@ -14,7 +14,8 @@ export class GuardsService {
     const poruka: string = odobriPristup ? "Odobren pristup!" : "Onemoućen pristup!";
 
     alert(poruka);
-
-    this.router.navigateByUrl("admin");
+    if(odobriPristup===true){
+      this.router.navigateByUrl("kreiraj-vozilo");
+    }
   }
 }

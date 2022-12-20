@@ -1,0 +1,21 @@
+.container{
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.form-container {
+  text-align: center;
+}
+table{
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border: 1px solid blue;
+}
+th{
+  justify-content: center;
+  padding: 1px;
+  width: 15%;
+}

@@ -1,0 +1,21 @@
+
+<div class="container">
+  <div class="form-container">
+    <table class="table"  *ngFor="let item of arrayCars">
+      <thead>
+        <tr>
+          <th>Tip</th>
+          <th>Naziv</th>
+          <th>Datum kreiranja</th>
+        </tr>
+      </thead>
+      <tbody>
+        <td>{{item.tip}}</td>
+        <td>{{item.naziv}}</td>
+        <td>{{item.datumKreiranja}}</td>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+

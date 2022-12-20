@@ -1,0 +1,16 @@
+<h3>
+  Kreiraj vozilo!
+</h3>
+<div class="container">
+  <div class="form-container">
+
+    <label for="newcar">Car:</label>
+    <input #newcar type="text" placeholder="Car name" (keyup)="getValueCar(newcar.value)">
+
+    <button (click)="pozdravnaPoruka(newcar.value)">Add</button>
+
+    <select >
+      <option *ngFor="let n of cars">{{n.tip}}</option>
+    </select>
+  </div>
+</div>
