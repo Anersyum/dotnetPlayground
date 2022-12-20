@@ -1,1 +1,5 @@
-<!--<p>project-navigation works!</p>-->
+<nav>
+    <a class="nav-link" routerLink="home">Home</a>
+    <a *ngIf="_loginService.isUserLoggedIn" class="nav-link" routerLink="kreiraj-vozilo">Kreiraj vozilo</a>
+    <a class="nav-link" routerLink="lista-vozila">Lista vozila</a>
+</nav>

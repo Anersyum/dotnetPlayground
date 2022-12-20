@@ -1,22 +1,16 @@
-import { Router } from '@angular/router';
+import { CanActivate } from '@angular/router';
 import { Injectable } from '@angular/core';
+
 
 @Injectable({
   providedIn: 'root',
 })
-export class DodjelaPristupaGuard {
-  constructor(private _router: Router) {}
+export class DodjelaPristupaGuard implements CanActivate {
 
-  dodijeliPristup(odobriPristup: boolean) {
-    localStorage.setItem('logedIN', String(odobriPristup));
-    const poruka: string = odobriPristup
-      ? 'Odobren pristup!'
-      : 'Onemoućen pristup!';
+  canActivate(): boolean {
+    const username: string | null = localStorage.getItem('username');
+    const password: string | null = localStorage.getItem('password');
 
-    alert(poruka);
-
-    if (odobriPristup === true) {
-      this._router.navigateByUrl('kreiraj-vozilo');
-    }
+    return username != null && password != null;
   }
 }

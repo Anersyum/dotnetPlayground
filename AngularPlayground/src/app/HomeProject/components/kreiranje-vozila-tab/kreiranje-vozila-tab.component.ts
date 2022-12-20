@@ -50,13 +50,15 @@ export class KreiranjeVozilaTabComponent implements OnInit {
     this.novoAutoNaziv = unos;
   }
 
-  pozdravnaPoruka(unos: string) {
-    //this.cars.push({ naziv: this.novoAutoNaziv });
-    this.cars.push({
-      tip: this.novoAutoNaziv.toString(),
-    });
-    this._carsService.saveValues(unos);
-    alert(`Dodan auto: ${this.novoAutoNaziv}`);
+  pozdravnaPoruka(unos: string, tip: string) {
+    const auto: Cars = {
+      naziv: unos,
+      tip: tip,
+      datumKreiranja: new Date()
+    };
+
+    this._carsService.saveValues(auto);
+    alert(`Dodan auto: ${auto.naziv}`);
 
     setTimeout(() => {
       this._router.navigateByUrl('lista-vozila');

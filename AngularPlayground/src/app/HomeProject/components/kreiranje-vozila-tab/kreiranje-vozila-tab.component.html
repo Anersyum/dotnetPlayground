@@ -7,10 +7,10 @@
     <label for="newcar">Car:</label>
     <input #newcar type="text" placeholder="Car name" (keyup)="getValueCar(newcar.value)">
 
-    <button (click)="pozdravnaPoruka(newcar.value)">Add</button>
+    <button (click)="pozdravnaPoruka(newcar.value, tip.value)">Add</button>
 
-    <select >
-      <option *ngFor="let n of cars">{{n.tip}}</option>
+    <select #tip>
+      <option *ngFor="let n of cars" [value]="n.tip">{{n.tip}}</option>
     </select>
   </div>
 </div>

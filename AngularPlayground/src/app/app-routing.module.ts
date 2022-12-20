@@ -33,7 +33,7 @@ const oldRoutes = [
 
 export const routes: Routes = [
   {path:"lista-vozila", component:ListaVozilaTabComponent, title:"Lista vozila"},
-  {path:"kreiraj-vozilo", component:KreiranjeVozilaTabComponent, title:"Kreiranje vozila"/*, canActivate:[DodjelaPristupaGuard]*/},
+  {path:"kreiraj-vozilo", component:KreiranjeVozilaTabComponent, title:"Kreiranje vozila", canActivate:[DodjelaPristupaGuard]},
   {path:"home", component:HomeTabComponent, title:"Home"}
   //{ path: "vjezbe-jedan", component: VjezbeJedanComponent, title:"Vjezbe 1" }, //WildCard
 ];

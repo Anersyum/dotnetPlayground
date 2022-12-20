@@ -8,6 +8,7 @@
     <input #password type="text" placeholder="password" (keyup)="getValuePassword(password.value)"/> <br />
 
 
-    <button (click)="logIn(true)">Login</button>
+    <button (click)="logIn()">Login</button>
+    <button (click)="logout()" *ngIf="isLoggedIn">Logout</button>
   </div>
 </div>

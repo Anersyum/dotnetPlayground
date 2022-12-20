@@ -1,6 +1,5 @@
-import { Routes } from '@angular/router';
 import { Component } from '@angular/core';
-import { routes } from 'src/app/app-routing.module';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-project-navigation',
@@ -9,4 +8,7 @@ import { routes } from 'src/app/app-routing.module';
 })
 export class ProjectNavigationComponent {
 
+  // isLoggedIn: boolean = this._loginService.isLoggedIn;
+
+  constructor(protected _loginService: LoginService) {}
 }
