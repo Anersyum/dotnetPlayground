@@ -77,14 +77,31 @@ Have fun coding ^_^
 
         /*Sve što je u dtopUpdate sada treba biti prebačeno na Car: */
         var date = DateTime.Now;
-        Car newCar = new Car()
-        {
-            Marka = dtoUpdate.Marka,
-            Tip = dtoUpdate.Tip,
-            DatumKreiranja = date.ToShortDateString()
-        };
+        // Amor: ovaj dio bi išao nekako ovako
+        /*
+         * car.Marka = dtoUpdate.Marka;
+         * car.Tip = dtoUpdate.Tip;
+         * car.DatumKreiranja = date.ToShortDateString();
+         * 
+         * kad uradiš ovo, newCar ti više ne treba i onda možeš normalno uraditi update
+         */
 
-        int dodijeliBaziNoveVrijednosti = await carRepository.KreiranjeAutauBazi(newCar);
+        /* Amor: što se tiče PUT i Swagger, Swagger prikazuje sve što ti je unutar DTO i to je ok
+            Ok je imati ID za update jer kažeš "ok, automobil čiji je ID 14, njegova nova Marka je novaMarka 
+            i njegov novi tip je noviTip. Tako da je ok imati ID i u Swagger-u jer ćeš ti svakako i sa PostMan-a ili
+            sa Angulara slati ID na PUT rutu. Drugačije nećeš znati koji entity update-aš pa bi tu imala problem
+            sa update-om. Tako da si dobro razumjela da je ok to polje imati unutar Swagger-a :D
+         */
+
+        //Car newCar = new Car()
+        //{
+        //    Marka = dtoUpdate.Marka,
+        //    Tip = dtoUpdate.Tip,
+        //    DatumKreiranja = date.ToShortDateString()
+        //};
+
+        // Amor: ovo ne treba u update jer ponovo kreiraš auto, a želiš ga samo da update-aš
+        //int dodijeliBaziNoveVrijednosti = await carRepository.KreiranjeAutauBazi(newCar);
 
         await carRepository.Update(car);
         return Ok(dtoUpdate);
