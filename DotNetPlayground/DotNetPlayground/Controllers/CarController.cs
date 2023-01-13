@@ -84,6 +84,7 @@ Have fun coding ^_^
          * car.DatumKreiranja = date.ToShortDateString();
          * 
          * kad uradiš ovo, newCar ti više ne treba i onda možeš normalno uraditi update
+         * ako zamjeniš property-e dohvaćenog auta, onda nema potrebe da vršiš update jer se ništa nije promijenilo
          */
 
         /* Amor: što se tiče PUT i Swagger, Swagger prikazuje sve što ti je unutar DTO i to je ok
