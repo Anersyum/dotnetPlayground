@@ -33,6 +33,8 @@ builder.Services.AddSwaggerGen();
 //=======
 builder.Services.AddScoped<IUserRepository, UserRepositoryNew>();
 //>>>>>>> 6fefbc87084fd890c652f4525492dbd7558dd5d3
+//
+builder.Services.AddScoped<ICarRepository, CarRepository>();
 
 builder.Services.AddDbContext<Baza>(config =>
 {
@@ -40,6 +42,7 @@ builder.Services.AddDbContext<Baza>(config =>
 });
 
 builder.Services.AddScoped<IKalkulator_Z1, OduzmiPaSaberi_Z1 >();
+
 
 var app = builder.Build();
 

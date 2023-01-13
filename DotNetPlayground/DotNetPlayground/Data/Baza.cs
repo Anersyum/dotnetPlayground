@@ -7,8 +7,9 @@ public class Baza : DbContext
 {
     public DbSet<Maca> Mace { get; set; }
     public DbSet<User> Users { get; set; }
+    public DbSet<Car> Cars { get; set; }
 
-    public Baza(DbContextOptions<Baza> options) : base(options) 
+    public Baza(DbContextOptions<Baza> options) : base(options)
     {
     }
 
@@ -47,8 +48,43 @@ public class Baza : DbContext
                 FavouriteFood = "Burek"
             }
         };
+        List<Car> cars = new()
+        {
+            new Car
+            {
+                Id=1,
+                Tip="Karavan",
+                Marka="Audi",
+                DatumKreiranja="09.01.2023"
+            },
+            new Car
+            {
+                Id=2,
+                Tip="Limuzina",
+                Marka="Škoda",
+                DatumKreiranja="09.01.2023"
+
+            },
+            new Car
+            {
+                Id=3,
+                Tip="Džip",
+                Marka="Toyota",
+                DatumKreiranja="09.01.2023"
+
+            },
+            new Car
+            {
+                Id=4,
+                Tip="SUV",
+                Marka="VW",
+               DatumKreiranja="09.01.2023"
+
+            }
+        };
 
         modelBuilder.Entity<User>()
             .HasData(users);
+        modelBuilder.Entity<Car>().HasData(cars);
     }
 }
