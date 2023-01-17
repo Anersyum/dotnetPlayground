@@ -1,0 +1,10 @@
+﻿Napraviti API endpoint-e koji će omogućiti pretragu osobe prema ID-u, prikaz svih osoba koji se nalaze u bazi,
+editovanje podataka jedne osobe, brisanje osobe i kreiranje nove osobe.
+Osoba ima property-e:
+Id, Ime, Prezime, NajdrazaHrana, Email, DatumRodjenja, DatumKreiranja
+
+Obavezna polja za kreiranje osobe su Ime, Prezime, Email i DatumRodjenja i ona ne smiju biti niti prazna niti null.
+Email mora biti u email formatu, inače ne bi trebao da bude prihvaćen kao validan. Npr. test@test.com je validan email, a
+testattestdotcom nije validan email.
+
+Ako šta zapne, zovi :D
