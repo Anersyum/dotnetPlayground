@@ -1,4 +1,4 @@
-﻿namespace DotNetPlayground.Dto
+﻿namespace DotNetPlayground.Dto.Car
 {
     public class CarDto
     {

@@ -8,6 +8,7 @@ public class Baza : DbContext
     public DbSet<Maca> Mace { get; set; }
     public DbSet<User> Users { get; set; }
     public DbSet<Car> Cars { get; set; }
+    public DbSet<Osoba> Osobe { get; set; }
 
     public Baza(DbContextOptions<Baza> options) : base(options)
     {
@@ -82,9 +83,51 @@ public class Baza : DbContext
 
             }
         };
+        List<Osoba> osobe = new()
+        {
+            new Osoba
+            {
+                Id = 1,
+                Ime = "Amor",
+                Prezime = "Osmić",
+                NajdrazaHrana = "Krompir",
+                DatumRodjenja=new DateTime(1995,12,01),
+                Email="amor@gmx.com",
+                DatumKreiranja=DateTime.Now
+            },
+            new Osoba
+            {
+                Id = 2,
+                Ime = "Sara",
+                Prezime = "Šahinpašić",
+                NajdrazaHrana = "Pizza",
+                DatumRodjenja=new DateTime(1995,03,23),
+                Email="sara@gmx.com",
+                DatumKreiranja=DateTime.Now
+            },
+            new Osoba
+            {
+                Id = 3,
+                Ime = "Ines",
+                Prezime = "Osmić",
+                NajdrazaHrana = "Špagete",
+                DatumRodjenja=new DateTime(1998,11,20),
+                Email="ines@gmx.com"
+            },
+            new Osoba
+            {
+                Id = 4,
+                Ime = "Jasko",
+                Prezime = "Kreho",
+                NajdrazaHrana = "Burek",
+                DatumRodjenja=new DateTime(1994,01,24),
+                Email="jasko@gmx.com"
+                            }
+        };
 
         modelBuilder.Entity<User>()
             .HasData(users);
         modelBuilder.Entity<Car>().HasData(cars);
+        modelBuilder.Entity<Osoba>().HasData(osobe);
     }
 }

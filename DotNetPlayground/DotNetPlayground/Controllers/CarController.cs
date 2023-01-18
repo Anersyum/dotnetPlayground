@@ -1,5 +1,5 @@
 ﻿using DotNetPlayground.Data;
-using DotNetPlayground.Dto;
+using DotNetPlayground.Dto.Car;
 using DotNetPlayground.Interfaces;
 using DotNetPlayground.Migrations;
 using DotNetPlayground.Models;
@@ -32,7 +32,6 @@ Za sva pitanja, obratite se najbližem lijenom... instruktoru... ili mentoru... 
 Have fun coding ^_^
 */
     private readonly Baza _baza;
-
     public CarController(Baza baza)
     {
         //moguće je unutar konstruktora pozvati i ICarRepositry, te onda ne moram unutar metoda pisati [FromServices]
@@ -41,11 +40,11 @@ Have fun coding ^_^
 
     //[HttpGet] - 2 primjera "OK" funkcija
     [HttpGet("/cars")]
-    //public async Task<ActionResult<Car>> Get()
-    //{
-    //    var cars = await _baza.Cars.ToListAsync();
-    //    return Ok(cars);
-    //}
+    /*public async Task<ActionResult<Car>> Get()
+    {
+        var cars = await _baza.Cars.ToListAsync();
+        return Ok(cars);
+    }*/
     public async Task<IActionResult> GetAllCarsAction([FromServices] ICarRepository carRepository)
     {
         var cars = await carRepository.GetAllCars();
@@ -68,7 +67,7 @@ Have fun coding ^_^
     }
 
     [HttpPut("/car/update")]
-    public async Task<IActionResult> CarUpdateAction([FromBody]CarDtoUpdate dtoUpdate, [FromServices] ICarRepository carRepository)
+    public async Task<IActionResult> CarUpdateAction([FromBody] CarDtoUpdate dtoUpdate, [FromServices] ICarRepository carRepository)
     {
         var car = await carRepository.GetById(dtoUpdate.Id); //repozitoriju saljem Id koji sam dobila
 
@@ -79,12 +78,19 @@ Have fun coding ^_^
         var date = DateTime.Now;
         // Amor: ovaj dio bi išao nekako ovako
         /*
-         * car.Marka = dtoUpdate.Marka;
-         * car.Tip = dtoUpdate.Tip;
-         * car.DatumKreiranja = date.ToShortDateString();
-         * 
-         * kad uradiš ovo, newCar ti više ne treba i onda možeš normalno uraditi update
-         * ako zamjeniš property-e dohvaćenog auta, onda nema potrebe da vršiš update jer se ništa nije promijenilo
+         Car newCar = new Car()
+        {
+            Marka = dtoUpdate.Marka,
+            Tip = dtoUpdate.Tip,
+            DatumKreiranja = date.ToShortDateString()
+        };
+        */
+        car.Marka = dtoUpdate.Marka;
+        car.Tip = dtoUpdate.Tip;
+        car.DatumKreiranja = date.ToShortDateString();
+        /*
+          kad uradiš ovo, newCar ti više ne treba i onda možeš normalno uraditi update
+          ako zamjeniš property-e dohvaćenog auta, onda nema potrebe da vršiš update jer se ništa nije promijenilo
          */
 
         /* Amor: što se tiče PUT i Swagger, Swagger prikazuje sve što ti je unutar DTO i to je ok
@@ -94,17 +100,11 @@ Have fun coding ^_^
             sa update-om. Tako da si dobro razumjela da je ok to polje imati unutar Swagger-a :D
          */
 
-        //Car newCar = new Car()
-        //{
-        //    Marka = dtoUpdate.Marka,
-        //    Tip = dtoUpdate.Tip,
-        //    DatumKreiranja = date.ToShortDateString()
-        //};
-
-        // Amor: ovo ne treba u update jer ponovo kreiraš auto, a želiš ga samo da update-aš
-        //int dodijeliBaziNoveVrijednosti = await carRepository.KreiranjeAutauBazi(newCar);
-
-        await carRepository.Update(car);
+        /* 
+         Amor: ovo ne treba u update jer ponovo kreiraš auto, a želiš ga samo da update-aš
+         int dodijeliBaziNoveVrijednosti = await carRepository.KreiranjeAutauBazi(newCar);
+        */
+                await carRepository.Update(car);
         return Ok(dtoUpdate);
     }
 
@@ -114,5 +114,4 @@ Have fun coding ^_^
         var carBaseId = await carRepository.DeleteById(carId);
         return Ok();
     }
-
 }

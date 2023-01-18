@@ -36,12 +36,14 @@ builder.Services.AddScoped<IUserRepository, UserRepositoryNew>();
 //
 builder.Services.AddScoped<ICarRepository, CarRepository>();
 
+builder.Services.AddTransient<IOsobaRepository, OsobaRepository>();
+
 builder.Services.AddDbContext<Baza>(config =>
 {
     config.UseSqlite(builder.Configuration.GetConnectionString("Sqlite"));
 });
 
-builder.Services.AddScoped<IKalkulator_Z1, OduzmiPaSaberi_Z1 >();
+builder.Services.AddScoped<IKalkulator_Z1, OduzmiPaSaberi_Z1>();
 
 
 var app = builder.Build();
