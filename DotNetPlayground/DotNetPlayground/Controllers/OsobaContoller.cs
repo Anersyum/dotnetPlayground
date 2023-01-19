@@ -13,14 +13,14 @@ namespace DotNetPlayground.Controllers
     [ApiController]
     public class OsobaContoller : ControllerBase
     {
-        private readonly Baza _baza;
+        private readonly IOsobaRepository osobaRepository;
 
-        public OsobaContoller(Baza baza)
+        public OsobaContoller(IOsobaRepository osobaRepository)
         {
-            this._baza = baza;
+            this.osobaRepository = osobaRepository;
         }
         [HttpGet("/osobe")]
-        public async Task<IActionResult> GetOsobeAction([FromServices] IOsobaRepository osobaRepository)
+        public async Task<IActionResult> GetOsobeAction()
         {
             var osobe = await osobaRepository.GetAllOsobe();
             return Ok(osobe);
@@ -48,14 +48,14 @@ namespace DotNetPlayground.Controllers
                 Prezime = osobaCreateDto.Prezime,
                 Email = osobaCreateDto.Email,
                 DatumRodjenja = osobaCreateDto.DatumRodjenja,
-                DatumKreiranja = osobaCreateDto.DatumKreiranja, //Swgger: ne radi update ovog property
+                DatumKreiranja = DateTime.Now, //Swgger: ne radi update ovog property
                 NajdrazaHrana = osobaCreateDto.NajdrazaHrana
             };
             int osobaId = await osobaRepository.CreateNovuOsobuInBase(newOsoba);
             return CreatedAtAction(nameof(CreateOsobaAction), osobaId);
         }
 
-        [HttpPut("/osoba/{osobaId}")]
+        [HttpPut("/osoba")]
         public async Task<IActionResult> UpdateOsobaAction(OsobaUpdateDto osobaDto,
             [FromServices] IOsobaRepository osobaRepository)
         {
@@ -66,7 +66,24 @@ namespace DotNetPlayground.Controllers
             osoba.Ime = osobaDto.Ime;
             osoba.Prezime = osobaDto.Prezime;
             osoba.Email = osobaDto.Email;
-            osoba.DatumRodjenja = osoba.DatumRodjenja;
+            osoba.DatumRodjenja = osobaDto.DatumRodjenja;
+
+            await osobaRepository.UpdateOsobu(osoba);
+            return Ok(osobaDto);
+        }
+
+        [HttpPut("/osoba/{osobaId}")]
+        public async Task<IActionResult> UpdateOsobaAction(OsobaUpdateDto osobaDto,
+            [FromServices] IOsobaRepository osobaRepository, int osobaId)
+        {
+            var osoba = await osobaRepository.GetByIdOsobu(osobaId);
+            if (osoba is null)
+                return NotFound($"Nema osobe s id: {osobaId}");
+
+            osoba.Ime = osobaDto.Ime;
+            osoba.Prezime = osobaDto.Prezime;
+            osoba.Email = osobaDto.Email;
+            osoba.DatumRodjenja = osobaDto.DatumRodjenja;
 
             await osobaRepository.UpdateOsobu(osoba);
             return Ok(osobaDto);

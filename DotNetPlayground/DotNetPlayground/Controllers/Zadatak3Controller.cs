@@ -16,9 +16,32 @@ public sealed class Zadatak3Controller : ControllerBase
         return Ok(users);
     }
 
-    [HttpPost("/user/create")]
+    [HttpPost("/user")]
     public async Task<IActionResult> UserCreateAction(User user)
     {
         return CreatedAtAction(nameof(UserCreateAction), user);
+    }
+
+    [HttpPut("/user/{userId}")]
+    public async Task<IActionResult> UserEditAction(int userId)
+    {
+        return Ok($"Update korisnika sa ID {userId}");
+    }
+
+    [HttpDelete("/user/{userId}")]
+    public async Task<IActionResult> UserDeleteAction(int userId)
+    {
+        return Ok($"Obrisan korisnik sa ID {userId}");
+    }
+
+    [HttpGet("/user/{userId}")]
+    public async Task<IActionResult> UsergetbyIdAction(int userId)
+    {
+        return Ok(new
+        {
+            UserId = userId,
+            FirstName = "Meho",
+            LastName = "Mješalica"
+        });
     }
 }
