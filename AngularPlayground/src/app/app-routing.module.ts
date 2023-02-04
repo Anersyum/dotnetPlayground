@@ -17,6 +17,11 @@ import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
 import { KreiranjeVozilaTabComponent } from './HomeProject/components/kreiranje-vozila-tab/kreiranje-vozila-tab.component';
 import { ListaVozilaTabComponent } from './HomeProject/components/lista-vozila-tab/lista-vozila-tab.component';
 import { HomeTabComponent } from './HomeProject/components/home-tab/home-tab.component';
+import { RS1HomeComponent } from './rs1/home/home.component';
+import { LgoinComponent } from './rs1/lgoin/lgoin.component';
+import { RegisterComponent } from './rs1/register/register.component';
+import { StudentiComponent } from './rs1/studenti/studenti.component';
+import { DataGuardGuard } from './guards/data-guard.guard';
 
 const oldRoutes = [
   { path:"admin", component:AdminComponent, title:"Admin-Zadatak 4,", canActivate:[AdminGuard] },
@@ -27,15 +32,19 @@ const oldRoutes = [
   { path: "profile", component: ProfileComponent, title: "Profile", canActivate: [ProfileGuardGuard] },
   { path: "login", component: LoginComponent, title: "Login" },
   { path: "", component: HomeComponent, title: "Home" },
-
+  {path:"lista-vozila", component:ListaVozilaTabComponent, title:"Lista vozila"},
+  {path:"kreiraj-vozilo", component:KreiranjeVozilaTabComponent, title:"Kreiranje vozila", canActivate:[DodjelaPristupaGuard]},
+  {path:"home", component:HomeTabComponent, title:"Home"},
+  //{ path: "vjezbe-jedan", component: VjezbeJedanComponent, title:"Vjezbe 1" }, //WildCard
   { path: "**", component: PageNotFoundComponent }, //WildCard
 ]
 
 export const routes: Routes = [
-  {path:"lista-vozila", component:ListaVozilaTabComponent, title:"Lista vozila"},
-  {path:"kreiraj-vozilo", component:KreiranjeVozilaTabComponent, title:"Kreiranje vozila", canActivate:[DodjelaPristupaGuard]},
-  {path:"home", component:HomeTabComponent, title:"Home"}
-  //{ path: "vjezbe-jedan", component: VjezbeJedanComponent, title:"Vjezbe 1" }, //WildCard
+  { path: "", component: RS1HomeComponent },
+  { path: "prijava", component: LgoinComponent },
+  { path: "registracija", component: RegisterComponent },
+  { path: "studenti", component: StudentiComponent, canActivate: [DataGuardGuard] },
+  { path: "**", component: RS1HomeComponent }
 ];
 
 

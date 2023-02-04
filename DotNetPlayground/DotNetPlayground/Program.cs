@@ -5,6 +5,7 @@ using DotNetPlayground.Models;
 using DotNetPlayground.Repositories;
 using DotNetPlayground.Servisi;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -35,7 +36,7 @@ builder.Services.AddScoped<IUserRepository, UserRepositoryNew>();
 //>>>>>>> 6fefbc87084fd890c652f4525492dbd7558dd5d3
 //
 builder.Services.AddScoped<ICarRepository, CarRepository>();
-
+builder.Services.AddSingleton<IMemoryCache, MemoryCache>();
 builder.Services.AddTransient<IOsobaRepository, OsobaRepository>();
 
 builder.Services.AddDbContext<Baza>(config =>
@@ -61,7 +62,7 @@ app.UseCors("allowAngularLocalHost");
 app.UseExceptionHandler("/error");
 //app.UseHttpsRedirection();
 
-app.UseAuthorization();
+//app.UseAuthorization();
 
 app.MapControllers();
 

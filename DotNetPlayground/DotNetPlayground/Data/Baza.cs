@@ -1,4 +1,5 @@
 ﻿using DotNetPlayground.Models;
+using DotNetPlayground.RSI.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace DotNetPlayground.Data;
@@ -9,6 +10,11 @@ public class Baza : DbContext
     public DbSet<User> Users { get; set; }
     public DbSet<Car> Cars { get; set; }
     public DbSet<Osoba> Osobe { get; set; }
+    public DbSet<Student> Studenti { get; set; }
+    public DbSet<Drzava> Drzave { get; set; }
+    public DbSet<Opstina> Opstine { get; set; }
+    public DbSet<Osoblje> Osoblje { get; set; }
+
 
     public Baza(DbContextOptions<Baza> options) : base(options)
     {
@@ -129,5 +135,12 @@ public class Baza : DbContext
             .HasData(users);
         modelBuilder.Entity<Car>().HasData(cars);
         modelBuilder.Entity<Osoba>().HasData(osobe);
+
+        modelBuilder.Entity<Osoblje>().HasData(new Osoblje
+        {
+            Id = 1,
+            Username = "Admin",
+            Password = "admin"
+        });
     }
 }

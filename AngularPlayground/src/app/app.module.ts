@@ -4,10 +4,15 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { IspisiPodatkeService } from './services/ispisi-podatke.service';
-import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
+
+import { StudentiComponent } from './rs1/studenti/studenti.component';
+import { LgoinComponent } from './rs1/lgoin/lgoin.component';
+import { RegisterComponent } from './rs1/register/register.component';
+import { NavComponent } from './rs1/nav/nav.component';
+import { moduleDeclarations } from './module-declarations';
+import { RS1HomeComponent } from './rs1/home/home.component';
+
 import { NavigationComponent } from './navigation/navigation.component';
 import { Zadatak1Component } from './zadatak1/zadatak1.component';
 import { Zadatak2Component } from './zadatak2/zadatak2.component';
@@ -21,14 +26,33 @@ import { VjezbeJedanComponent } from './vjezbe_13.12/vjezbe-jedan/vjezbe-jedan.c
 import { HomeTabComponent } from './HomeProject/components/home-tab/home-tab.component';
 import { KreiranjeVozilaTabComponent } from './HomeProject/components/kreiranje-vozila-tab/kreiranje-vozila-tab.component';
 import { ListaVozilaTabComponent } from './HomeProject/components/lista-vozila-tab/lista-vozila-tab.component';
+import { HomeComponent } from './home/home.component';
+import { IspisiPodatkeService } from './services/ispisi-podatke.service';
+import { LoginComponent } from './login/login.component';
 
+// const declarations = moduleDeclarations.concat([
+//   StudentiComponent,
+//   LgoinComponent,
+//   RegisterComponent,
+//   NavComponent,
+//   AppComponent,
+//   RS1HomeComponent
+// ]);
 
 @NgModule({
-  declarations: [
+  declarations:
+  [
+    StudentiComponent,
+    LgoinComponent,
+    RegisterComponent,
+    NavComponent,
+    AppComponent,
+    RS1HomeComponent,
+    // staro
     HomeTabComponent,
     KreiranjeVozilaTabComponent,
     ListaVozilaTabComponent,
-    AppComponent,
+    // AppComponent,
     HomeComponent,
     LoginComponent,
     NavigationComponent,
@@ -40,7 +64,7 @@ import { ListaVozilaTabComponent } from './HomeProject/components/lista-vozila-t
     AdminComponent,
     PageNotFoundComponent,
     ProjectNavigationComponent,
-    VjezbeJedanComponent
+    VjezbeJedanComponent,
   ],
   imports: [
     FormsModule,

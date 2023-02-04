@@ -4,11 +4,10 @@ using Microsoft.AspNetCore.Mvc;
 namespace DotNetPlayground.Controllers;
 
 [ApiExplorerSettings(IgnoreApi = true)]
-[Route("[controller]")]
+[Route("/error")]
 [ApiController]
 public sealed class ErrorController : ControllerBase
 {
-    [HttpGet("/error")]
     public IActionResult HandleException()
     {
         var exceptionFeature = HttpContext.Features.Get<IExceptionHandlerPathFeature>();
