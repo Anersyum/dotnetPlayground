@@ -1,0 +1,34 @@
+﻿@{ List<int> list2 = Enumerable.Range(1, 30).ToList(); }
+
+<div style="width: 400px">
+    @(
+        Html.Kendo()
+            .ComboBox()
+            .Name("MehoCombo")
+            .DataTextField("FirstName")
+            .DataValueField("Id")
+            .HeaderTemplate(@"
+                <div class='dropdown-header k-widget k-header'>
+                    <span>Names</span>
+                 </div>"
+            )
+            .FooterTemplate("Total <strong>#: instance.dataSource.total() #</strong> names found")
+            .DataSource(configurator => 
+            {
+                configurator.Read(r => r.Action("ComboBoxReadData", "Home"))
+                .ServerFiltering(true);
+            })
+            .Filter(FilterType.Contains)
+    )
+    <br />
+    <br />
+    @(
+        Html.Kendo()
+            .ComboBox()
+            .Name("MehoCombo2")
+            .BindTo(list2)
+            .Filter(FilterType.Contains)
+    )
+
+    <br />
+</div>

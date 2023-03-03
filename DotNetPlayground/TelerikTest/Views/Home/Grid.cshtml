@@ -1,0 +1,263 @@
+﻿@using DotNetPlayground.Models;
+@using TelerikTest.Controllers;
+@using TelerikTest.Extensions;
+<h3>Just a table</h3>
+@(
+    Html.Kendo()
+        .Grid<User>()
+        .Name("user-table")
+        .Columns(column =>
+        {
+            column.Bound(model => model.FirstName);
+            column.Bound(model => model.LastName);
+            column.Bound(model => model.FavouriteFood);
+            column.Bound(model => model.DateOfBirth)
+                .Format("{0:dd/MM/yyyy}");
+            column.Bound(model => model.DateOfBirthTypeOfDateTimeOffset);
+        })
+        .DataSource(dataSource => dataSource.Ajax()
+            .Read("Grid_ReadData", "Home")
+        )
+)
+
+<button class="btn btn-primary mt-2" onclick="fillBackgroundOfUserTable()">Click Me!</button>
+<br />
+<br />
+<h3>Table with hidden fields</h3>
+@(
+    Html.Kendo()
+        .Grid<User>()
+        .Name("user-table-with-hidden-fields")
+        .Columns(column =>
+        {
+            column.Bound(model => model.FirstName);
+            column.Bound(model => model.LastName);
+            column.Bound(model => model.DateOfBirth)
+                .Format("{0:dd/MM/yyyy}");
+            column.Bound(model => model.DateOfBirthTypeOfDateTimeOffset);
+        })
+        .DataSource(dataSource => dataSource.Ajax()
+            .Read("Grid_ReadData", "Home")
+        )
+        .ClientDetailTemplateId("hiddenFields")
+)
+
+<br />
+<br />
+<h3>Table with filter field</h3>
+@(
+    Html.Kendo()
+        .Grid<User>()
+        .Name("user-table-with-with-filter-fields")
+        .Columns(column =>
+        {
+            column.Bound(model => model.FirstName)
+                .Filterable(ftb => ftb.Cell(cell => 
+                    cell.Operator("contains")
+                        .ShowOperators(false))
+            );
+            column.Bound(model => model.LastName).Filterable(false);
+            column.Bound(model => model.DateOfBirth)
+                .Format("{0:dd/MM/yyyy}")
+                .Filterable(false);
+            column.Bound(model => model.DateOfBirthTypeOfDateTimeOffset)
+                .Filterable(false);
+        })
+        .Filterable(config => config.Mode(GridFilterMode.Row))
+        .DataSource(dataSource => dataSource.Ajax()
+            .Read("Grid_ReadData", "Home")
+        )
+)
+
+<br />
+<br />
+<h3>Table with group fields</h3>
+@(
+    Html.Kendo()
+        .Grid<User>()
+        .Name("user-table-with-with-group-fields")
+        .Columns(column =>
+        {
+            column.Group(group =>
+            {
+                group.Title("Full name")
+                    .Columns(col =>
+                    {
+                        col.Bound(model => model.FirstName);
+                        col.Bound(model => model.LastName);
+                    });
+            });
+            column.Group(group =>
+            {
+                group.Title("Date of birth")
+                    .Columns(col =>
+                    {
+                        col.Bound(model => model.DateOfBirth);
+                        col.Bound(model => model.DateOfBirthTypeOfDateTimeOffset);
+                    });
+            });
+            
+        })
+        .DataSource(dataSource => dataSource.Ajax()
+            .Read("Grid_ReadData", "Home")
+        )
+)
+
+<br />
+<br />
+<h3>Table action links</h3>
+@(
+    Html.Kendo()
+        .Grid<User>()
+        .Name("user-table-with-with-action-links")
+        .Columns(column =>
+        {
+            column.Bound(model => model.FirstName)
+                .ClientTemplate(
+                    Html.ActionLink(
+                        $"#={nameof(DotNetPlayground.Models.User.FirstName)}#",
+                        "RandomNumber", 
+                        "Home", new 
+                        { 
+                            firstName = $"#={nameof(DotNetPlayground.Models.User.FirstName)}#",
+                            lastName = $"#={nameof(DotNetPlayground.Models.User.LastName)}#"
+                        }
+                    ).ToHtmlString()
+                );
+            column.Bound(model => model.LastName)
+                .ClientTemplate(
+                    $@"<a href='/home/randomnumber?firstName=#={nameof(DotNetPlayground.Models.User.FirstName)}#
+                        &lastName=#={nameof(DotNetPlayground.Models.User.LastName)}#'>
+                            #={nameof(DotNetPlayground.Models.User.LastName)}#
+                        </a>");
+            column.Bound(model => model.DateOfBirth)
+                .Format("{0:dd/MM/yyyy}");
+            column.Bound(model => model.DateOfBirthTypeOfDateTimeOffset);
+
+        })
+        .DataSource(dataSource => dataSource.Ajax()
+            .Read("Grid_ReadData", "Home")
+        )
+)
+
+<br />
+<br />
+
+<h3>Table with editing</h3>
+@(
+    Html.Kendo()
+        .Grid<User>()
+        .Name("user-table-with-editing")
+        .Columns(column =>
+        {
+            column.Bound(model => model.FirstName);
+            column.Bound(model => model.LastName);
+            column.Bound(model => model.FavouriteFood);
+            column.Bound(model => model.DateOfBirth)
+                .Format("{0:dd/MM/yyyy}");
+            column.Bound(model => model.DateOfBirthTypeOfDateTimeOffset);
+            column.Command(command => command.Edit());
+        })
+        .Editable(e => e.Mode(GridEditMode.InLine).Enabled(true))
+        .DataSource(dataSource => dataSource.Ajax()
+            .Read("Grid_ReadCacheData", "Home")
+            .Update("Grid_UpdateCacheData", "Home")
+            .Model(model =>
+            {
+                model.Id(user => user.Id);
+                model.Field(user => user.FirstName).Editable(false);
+                model.Field(user => user.LastName).Editable(false);
+                model.Field(user => user.DateOfBirthTypeOfDateTimeOffset).Editable(false);
+            })
+        )
+)
+
+<br />
+<br />
+
+<h3>Table with batch editing</h3>
+@(
+    Html.Kendo()
+        .Grid<User>()
+        .Name("user-table-with-batch-editing")
+        .Columns(column =>
+        {
+            column.Bound(model => model.FirstName);
+            column.Bound(model => model.LastName);
+            column.Bound(model => model.FavouriteFood);
+            column.Bound(model => model.DateOfBirth)
+                .Format("{0:dd/MM/yyyy}");
+            column.Bound(model => model.DateOfBirthTypeOfDateTimeOffset);
+        })
+        .Editable(e => e.Mode(GridEditMode.InCell).Enabled(true))
+        .ToolBar(toolbar => toolbar.Save())
+        .DataSource(dataSource => dataSource.Ajax()
+            .Batch(true)
+            .Read("Grid_ReadCacheData", "Home")
+            .Update("Grid_UpdateCacheDataBatch", "Home")
+            .Model(model =>
+            {
+                model.Id(user => user.Id);
+                model.Field(user => user.FirstName).Editable(false);
+                model.Field(user => user.LastName).Editable(false);
+                model.Field(user => user.DateOfBirthTypeOfDateTimeOffset).Editable(false);
+            })
+        )
+)
+<br />
+<br />
+
+<h3>Table with paging, sorting, filtering</h3>
+@(
+Html.Kendo()
+        .Grid<User>()
+        .Name("user-table-with-filters-sorting-paging")
+        .Columns(column =>
+        {
+            column.Bound(model => model.FirstName).Filterable(true)
+                .Filterable(filter => filter.Cell(cell => cell.ShowOperators(false).Operator("contains")));
+            column.Bound(model => model.LastName).Filterable(true)
+                .Filterable(filter => filter.Cell(cell => cell.ShowOperators(false).Operator("contains")));
+            column.Bound(model => model.FavouriteFood)
+                .Filterable(true);
+            @*.Filterable(filter => filter.Cell(cell => cell.ShowOperators(false).Operator("contains")));*@
+            column.Bound(model => model.DateOfBirth)
+                .Format("{0:dd/MM/yyyy}").Filterable(true);
+            column.Bound(model => model.DateOfBirthTypeOfDateTimeOffset)
+                .Filterable(false);
+        })
+        .Pageable(p =>
+        {
+            p.AlwaysVisible(true).PreviousNext(true).PageSizes(new int[] { 20, 50 });
+        })
+        .Filterable(filter =>
+        {
+            filter.Mode(GridFilterMode.Row);
+        })
+        .Sortable(true)
+        @*.Pageable(p => p.Numeric(false).PreviousNext(false))
+        @*.Scrollable(s => s.Virtual(false).Enabled(true).Endless(true))*@
+        .DataSource(dataSource => dataSource.Ajax()
+            .PageSize(20)
+            @*.Sort(s => s.Add(model => model.FirstName).Ascending())*@
+            .Read("Grid_ReadSpecialData", "Home")
+        )
+)
+<br />
+<br />
+
+<script>
+    $(document).ready(() => {
+        const $justATable = $("#user-table").data("kendoGrid");
+        console.log($justATable, "data");
+    })
+
+    function fillBackgroundOfUserTable() {
+        const $justATable = $("#user-table").data("kendoGrid");
+        for (let i = 0; i < $justATable.items().length; ++i) {
+            $justATable.items()[i].style = "background-color: red";
+        }
+    }
+</script>
+
+<partial name="./Partials/_Grid_HiddenFields_Template.cshtml" />

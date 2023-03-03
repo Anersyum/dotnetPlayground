@@ -5,7 +5,14 @@ VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetPlayground", "DotNetPlayground\DotNetPlayground.csproj", "{5B1B3948-0239-419C-83B0-6CDF4E47B20F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunTimes", "FunTimes\FunTimes.csproj", "{3EB53D23-B88C-4B74-90B0-E25E8C26FDC2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FunTimes", "FunTimes\FunTimes.csproj", "{3EB53D23-B88C-4B74-90B0-E25E8C26FDC2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelerikTest", "TelerikTest\TelerikTest.csproj", "{C9F51945-0285-453A-A24D-0156035F876C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5CEE928B-E503-40D6-A614-60835C118795}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +28,10 @@ Global
 		{3EB53D23-B88C-4B74-90B0-E25E8C26FDC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3EB53D23-B88C-4B74-90B0-E25E8C26FDC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3EB53D23-B88C-4B74-90B0-E25E8C26FDC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9F51945-0285-453A-A24D-0156035F876C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9F51945-0285-453A-A24D-0156035F876C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9F51945-0285-453A-A24D-0156035F876C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9F51945-0285-453A-A24D-0156035F876C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

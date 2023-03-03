@@ -1,0 +1,21 @@
+﻿@using DotNetPlayground.Models;
+@using TelerikTest.Controllers;
+
+<kendo-template id="hiddenFields">
+    @(
+        Html.Kendo()
+        .Grid<Field>()
+        .Name($"hidden-field-#={nameof(DotNetPlayground.Models.User.Id)}#")
+        .Columns(column =>
+        {
+            column.Bound(model => model.HiddenField)
+            .HeaderHtmlAttributes(new { @style = "font-weight: bold" });
+            column.Bound(model => model.FavouriteFood)
+            .HeaderHtmlAttributes(new { @style = "font-weight: bold" });
+        })
+        .DataSource(request => request.Ajax()
+        .Read("GridHidden_ReadData", "Home", new { UserId = $"#={nameof(DotNetPlayground.Models.User.Id)}#" })
+        )
+        .ToClientTemplate()
+    )
+</kendo-template>

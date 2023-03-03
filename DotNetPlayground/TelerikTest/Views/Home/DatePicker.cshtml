@@ -1,0 +1,23 @@
+﻿<div style="width: 400px">
+    @(
+        Html.Kendo()
+            .DatePicker()
+            .Name("Meho_date")
+            .Animation(true)
+            .DateInput()
+            .DisableDates(DayOfWeek.Wednesday, DayOfWeek.Monday)
+    )
+    @(
+        Html.Kendo()
+            .DatePicker()
+            .Name("Meho_date2")
+            .Animation(false)
+            .Events(configurator => 
+            {
+                configurator.Open(
+                    @<text>alert("You opened me")</text>
+                ); // more like initialized...
+            })
+            .Footer(false)
+    )
+</div>

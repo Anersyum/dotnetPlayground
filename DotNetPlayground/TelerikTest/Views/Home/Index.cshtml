@@ -1,0 +1,50 @@
+﻿@using Kendo.Mvc.UI
+@using DotNetPlayground.Models
+
+<h1>Work pls</h1>
+<div style="width: 400px">
+    @(Html.Kendo()
+        .NumericTextBox()
+        .Name("meho")
+        .Min(100)
+        .Events((e) => e.Change("runMe"))
+        .Spinners(true)
+        .Size(ComponentSize.Medium)
+        .Decimals(2)
+        .Culture("n2")
+        .FillMode(FillMode.Flat)
+        .Placeholder("Number field")
+        .Step(10)
+        .Label((labelBuilder) =>
+        {
+            labelBuilder.Content("My first numeric text box huehue");
+        })
+    )
+    @(Html.Kendo()
+        .NumericTextBox()
+        .Name("Meho2")
+        .Min(100)
+        .Size(ComponentSize.Large)
+        .Decimals(2)
+        .Culture("n2")
+        .Factor(5)
+        .FillMode(FillMode.Solid)
+        .Label(lb => lb.Content("Second numeric box"))
+    )
+    @(Html.Kendo()
+        .NumericTextBox()
+        .Name("Meho3")
+        .Min(100)
+        .Size(ComponentSize.Small)
+        .Decimals(2)
+        .Culture("n2")
+        .Factor(5)
+        .FillMode(FillMode.Outline)
+        .Label(lb => lb.Content("Third numeric box"))
+    )
+</div>
+<script>
+    function runMe() {
+        console.log("meho");
+    }
+</script>
