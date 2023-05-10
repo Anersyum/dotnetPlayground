@@ -14,7 +14,7 @@ public class Baza : DbContext
     public DbSet<Drzava> Drzave { get; set; }
     public DbSet<Opstina> Opstine { get; set; }
     public DbSet<Osoblje> Osoblje { get; set; }
-
+    public DbSet<BezvezeModel> BezvezeModels { get; set; }
 
     public Baza(DbContextOptions<Baza> options) : base(options)
     {

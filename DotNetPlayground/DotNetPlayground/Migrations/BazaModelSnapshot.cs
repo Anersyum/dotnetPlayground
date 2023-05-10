@@ -17,6 +17,21 @@ namespace DotNetPlayground.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.0");
 
+            modelBuilder.Entity("DotNetPlayground.Models.BezvezeModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("BezvezeModels");
+                });
+
             modelBuilder.Entity("DotNetPlayground.Models.Car", b =>
                 {
                     b.Property<int>("Id")
@@ -69,21 +84,6 @@ namespace DotNetPlayground.Migrations
                         });
                 });
 
-            modelBuilder.Entity("DotNetPlayground.Models.Drzava", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Naziv")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Drzave");
-                });
-
             modelBuilder.Entity("DotNetPlayground.Models.Maca", b =>
                 {
                     b.Property<int>("Id")
@@ -102,26 +102,6 @@ namespace DotNetPlayground.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Mace");
-                });
-
-            modelBuilder.Entity("DotNetPlayground.Models.Opstina", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("DrzavaId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Naziv")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DrzavaId");
-
-                    b.ToTable("Opstine");
                 });
 
             modelBuilder.Entity("DotNetPlayground.Models.Osoba", b =>
@@ -161,7 +141,7 @@ namespace DotNetPlayground.Migrations
                         new
                         {
                             Id = 1,
-                            DatumKreiranja = new DateTime(2023, 2, 4, 17, 37, 42, 170, DateTimeKind.Local).AddTicks(9316),
+                            DatumKreiranja = new DateTime(2023, 2, 6, 17, 2, 20, 466, DateTimeKind.Local).AddTicks(8606),
                             DatumRodjenja = new DateTime(1995, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "amor@gmx.com",
                             Ime = "Amor",
@@ -171,7 +151,7 @@ namespace DotNetPlayground.Migrations
                         new
                         {
                             Id = 2,
-                            DatumKreiranja = new DateTime(2023, 2, 4, 17, 37, 42, 170, DateTimeKind.Local).AddTicks(9370),
+                            DatumKreiranja = new DateTime(2023, 2, 6, 17, 2, 20, 466, DateTimeKind.Local).AddTicks(8650),
                             DatumRodjenja = new DateTime(1995, 3, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "sara@gmx.com",
                             Ime = "Sara",
@@ -196,77 +176,6 @@ namespace DotNetPlayground.Migrations
                             NajdrazaHrana = "Burek",
                             Prezime = "Kreho"
                         });
-                });
-
-            modelBuilder.Entity("DotNetPlayground.Models.Osoblje", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Username")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Osoblje");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Password = "admin",
-                            Username = "Admin"
-                        });
-                });
-
-            modelBuilder.Entity("DotNetPlayground.Models.Student", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("BrojIndeksa")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("DatumDodavanja")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("DrzavaRodjenjaId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Ime")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("OpstinaRodjenjaId")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("OpstinaRodjenjaId1")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Prezime")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<byte[]>("ProfilnaSlika")
-                        .IsRequired()
-                        .HasColumnType("BLOB");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DrzavaRodjenjaId");
-
-                    b.HasIndex("OpstinaRodjenjaId1");
-
-                    b.ToTable("Studenti");
                 });
 
             modelBuilder.Entity("DotNetPlayground.Models.User", b =>
@@ -322,9 +231,115 @@ namespace DotNetPlayground.Migrations
                         });
                 });
 
-            modelBuilder.Entity("DotNetPlayground.Models.Opstina", b =>
+            modelBuilder.Entity("DotNetPlayground.RSI.Models.Drzava", b =>
                 {
-                    b.HasOne("DotNetPlayground.Models.Drzava", "Drzava")
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Naziv")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Drzave");
+                });
+
+            modelBuilder.Entity("DotNetPlayground.RSI.Models.Opstina", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("DrzavaId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Naziv")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DrzavaId");
+
+                    b.ToTable("Opstine");
+                });
+
+            modelBuilder.Entity("DotNetPlayground.RSI.Models.Osoblje", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Osoblje");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Password = "admin",
+                            Username = "Admin"
+                        });
+                });
+
+            modelBuilder.Entity("DotNetPlayground.RSI.Models.Student", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("BrojIndeksa")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("DatumDodavanja")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("DrzavaRodjenjaId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Ime")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("OpstinaRodjenjaId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("OpstinaRodjenjaId1")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Prezime")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<byte[]>("ProfilnaSlika")
+                        .IsRequired()
+                        .HasColumnType("BLOB");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DrzavaRodjenjaId");
+
+                    b.HasIndex("OpstinaRodjenjaId1");
+
+                    b.ToTable("Studenti");
+                });
+
+            modelBuilder.Entity("DotNetPlayground.RSI.Models.Opstina", b =>
+                {
+                    b.HasOne("DotNetPlayground.RSI.Models.Drzava", "Drzava")
                         .WithMany()
                         .HasForeignKey("DrzavaId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -333,15 +348,15 @@ namespace DotNetPlayground.Migrations
                     b.Navigation("Drzava");
                 });
 
-            modelBuilder.Entity("DotNetPlayground.Models.Student", b =>
+            modelBuilder.Entity("DotNetPlayground.RSI.Models.Student", b =>
                 {
-                    b.HasOne("DotNetPlayground.Models.Drzava", "DrzavaRodjenja")
+                    b.HasOne("DotNetPlayground.RSI.Models.Drzava", "DrzavaRodjenja")
                         .WithMany()
                         .HasForeignKey("DrzavaRodjenjaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("DotNetPlayground.Models.Opstina", "OpstinaRodjenja")
+                    b.HasOne("DotNetPlayground.RSI.Models.Opstina", "OpstinaRodjenja")
                         .WithMany()
                         .HasForeignKey("OpstinaRodjenjaId1")
                         .OnDelete(DeleteBehavior.Cascade)

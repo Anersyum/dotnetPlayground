@@ -1,6 +1,7 @@
 ﻿using DotNetPlayground.Interfaces;
 using DotNetPlayground.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.VisualStudio.Utilities;
 
 namespace DotNetPlayground.Controllers;
 
@@ -43,5 +44,12 @@ public sealed class Zadatak3Controller : ControllerBase
             FirstName = "Meho",
             LastName = "Mješalica"
         });
+    }
+
+    [HttpPost("/test")]
+    [ContentType("text/json")]
+    public IActionResult TestAction([FromBody] string text)
+    {
+        return Ok("fsdf" + text);
     }
 }
