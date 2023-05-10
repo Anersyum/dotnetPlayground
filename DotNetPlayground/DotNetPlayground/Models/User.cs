@@ -8,5 +8,8 @@ public sealed class User
     [Required]
     public string FirstName { get; set; } = "";
     public string LastName { get; set; } = "";
-    public string FavouriteFood { get; set; } = ""; 
+    public string FavouriteFood { get; set; } = "";
+    public DateTime DateOfBirth { get; set; }
+    public DateTimeOffset DateOfBirthTypeOfDateTimeOffset { get; set; }
+    public string HiddenField { get; set; }
 }
