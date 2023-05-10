@@ -8,6 +8,13 @@ public sealed class TasksExample
 {
     private readonly IMemoryCache _memoryCache = new MemoryCache(new MemoryCacheOptions());
 
+    public async Task SaveResultToCache()
+    {
+        var result = await File.ReadAllTextAsync("ditto.json");
+
+        _memoryCache.Set("ditto", result);
+    }
+
     public async Task<string> TestTask()
     {
         var ditto = _memoryCache.Get<string>("ditto");
