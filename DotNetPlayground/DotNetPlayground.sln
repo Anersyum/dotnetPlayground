@@ -5,7 +5,9 @@ VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetPlayground", "DotNetPlayground\DotNetPlayground.csproj", "{5B1B3948-0239-419C-83B0-6CDF4E47B20F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunTimes", "FunTimes\FunTimes.csproj", "{3EB53D23-B88C-4B74-90B0-E25E8C26FDC2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FunTimes", "FunTimes\FunTimes.csproj", "{3EB53D23-B88C-4B74-90B0-E25E8C26FDC2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShadowProps", "ShadowProps\ShadowProps.csproj", "{CDA51B5D-043B-4470-9612-70C2DB56793D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{3EB53D23-B88C-4B74-90B0-E25E8C26FDC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3EB53D23-B88C-4B74-90B0-E25E8C26FDC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3EB53D23-B88C-4B74-90B0-E25E8C26FDC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDA51B5D-043B-4470-9612-70C2DB56793D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDA51B5D-043B-4470-9612-70C2DB56793D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDA51B5D-043B-4470-9612-70C2DB56793D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDA51B5D-043B-4470-9612-70C2DB56793D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
