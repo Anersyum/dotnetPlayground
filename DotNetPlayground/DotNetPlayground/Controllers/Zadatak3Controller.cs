@@ -1,7 +1,6 @@
 ﻿using DotNetPlayground.Interfaces;
 using DotNetPlayground.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.VisualStudio.Utilities;
 
 namespace DotNetPlayground.Controllers;
 
@@ -47,7 +46,6 @@ public sealed class Zadatak3Controller : ControllerBase
     }
 
     [HttpPost("/test")]
-    [ContentType("text/json")]
     public IActionResult TestAction([FromBody] string text)
     {
         return Ok("fsdf" + text);
