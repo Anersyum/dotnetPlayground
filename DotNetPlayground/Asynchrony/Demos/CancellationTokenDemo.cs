@@ -7,7 +7,7 @@ internal static class CancellationTokenDemo
         using CancellationTokenSource cts = new();
 
         Task cancelTask = CancelMePlease(cts.Token);
-
+        
         try
         {
             Console.WriteLine("Press A to cancel:");
@@ -15,7 +15,8 @@ internal static class CancellationTokenDemo
             {
                 cts.Cancel();
             }
-
+            
+            Console.WriteLine();
             await cancelTask;
 
             if (cancelTask.IsCompletedSuccessfully)
@@ -23,14 +24,12 @@ internal static class CancellationTokenDemo
                 Console.WriteLine("I'm not canceled!");
             }
         }
-        catch (Exception e)
+        catch (OperationCanceledException e)
         {
             if (cancelTask.IsCanceled)
             {
                 Console.WriteLine("Dude, I'm canceled...");
             }
-
-            Console.WriteLine("Aww maan, I can't have shit...");
         }
     }
 
@@ -50,6 +49,7 @@ internal static class CancellationTokenDemo
             }
 
             Console.WriteLine("Task completed!");
+            
             return Task.CompletedTask;
         }, cancellationToken);
     }

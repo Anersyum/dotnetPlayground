@@ -3,8 +3,8 @@ using DotNetPlayground.Interfaces;
 using DotNetPlayground.Servisi;
 using IdentityModel;
 using IdentityModel.Client;
-using IdentityServer4.Models;
-using IdentityServer4.Services;
+// using IdentityServer4.Models;
+// using IdentityServer4.Services;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860

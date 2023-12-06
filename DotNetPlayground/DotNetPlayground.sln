@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetPlayground", "DotNetP
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FunTimes", "FunTimes\FunTimes.csproj", "{3EB53D23-B88C-4B74-90B0-E25E8C26FDC2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer", "IdentityServer\IdentityServer.csproj", "{4A1310B2-4AF7-4099-B491-7FE67A332634}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Asynchrony", "Asynchrony\Asynchrony.csproj", "{ED4334B1-7BE9-410C-BE2A-DF9DBFC79818}"
 EndProject
 Global
@@ -25,10 +23,6 @@ Global
 		{3EB53D23-B88C-4B74-90B0-E25E8C26FDC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3EB53D23-B88C-4B74-90B0-E25E8C26FDC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3EB53D23-B88C-4B74-90B0-E25E8C26FDC2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4A1310B2-4AF7-4099-B491-7FE67A332634}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4A1310B2-4AF7-4099-B491-7FE67A332634}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4A1310B2-4AF7-4099-B491-7FE67A332634}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4A1310B2-4AF7-4099-B491-7FE67A332634}.Release|Any CPU.Build.0 = Release|Any CPU
 		{ED4334B1-7BE9-410C-BE2A-DF9DBFC79818}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{ED4334B1-7BE9-410C-BE2A-DF9DBFC79818}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED4334B1-7BE9-410C-BE2A-DF9DBFC79818}.Release|Any CPU.ActiveCfg = Release|Any CPU

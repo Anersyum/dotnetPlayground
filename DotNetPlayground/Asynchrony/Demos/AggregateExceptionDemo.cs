@@ -2,7 +2,7 @@ namespace Asynchrony.Demos;
 
 public static class AggregateExceptionDemo
 {
-    public static void Run()
+    public static async Task Run()
     {
         Task task1 = Task.Run(WorkThatThrowsExceptions);
         Task task2 = Task.Run(WorkThatThrowsExceptions);
@@ -10,12 +10,16 @@ public static class AggregateExceptionDemo
 
         try
         {
-            Task.WhenAll(task1, task2, task3).Wait();
+            // Task.WhenAll(task1, task2, task3).Wait();
+            await Task.WhenAll(task1, task2, task3);
         }
         catch (AggregateException e)
         {
-            Console.WriteLine("Ojga");
-            Console.WriteLine(e);
+            Console.WriteLine("AggregateException: {0}", e.Message);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Not AggregateException: {0}", e.Message);
         }
     }
 
@@ -27,9 +31,9 @@ public static class AggregateExceptionDemo
 
         if (delayMillis >= 4500)
         {
-            throw new ArgumentException("Break!");
+            throw new ArgumentException("Argument exception.");
         }
 
-        throw new TimeoutException("Time!");
+        throw new TimeoutException("Timeout exception.");
     }
 }

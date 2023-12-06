@@ -12,26 +12,38 @@ public static class ContinueWithDemo
         Task task = Task.Run(() =>
         {
             Thread.Sleep(2000);
-            throw new Exception("memem");
-            Console.WriteLine("Helloi");
+            throw new Exception("Exception");
+            Console.WriteLine("Hello from task");
         });
 
         var t = task.ContinueWith((t) =>
         {
             if (t.IsFaulted)
             {
-                Console.WriteLine("Faličan");
+                Console.WriteLine("Faulty task");
             }
-            Console.WriteLine("Nastavljamo");
+            
+            Console.WriteLine("We continue.");
         });
 
-        Console.WriteLine("spavamo");
+        Console.WriteLine("Before thread sleep");
         Thread.Sleep(4000);
-        Console.WriteLine("ustali smo");
+        Console.WriteLine("After thread sleep");
+        
         await t;
 
-        await task;
-
-        Console.WriteLine("Nastavljamo!");
+        // try
+        // {
+        //     await task;
+        // }
+        // catch (Exception)
+        // {
+        //     if (task.IsFaulted)
+        //     {
+        //         Console.WriteLine("Faulted after await");
+        //     }
+        // }
+        
+        Console.WriteLine("Done!");
     }
 }

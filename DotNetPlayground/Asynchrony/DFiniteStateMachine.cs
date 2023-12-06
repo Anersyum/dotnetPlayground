@@ -1,4 +1,5 @@
-﻿namespace FunTimes;
+﻿namespace Asynchrony;
+
 internal enum State
 {
     Idle,
@@ -7,39 +8,35 @@ internal enum State
     Done
 }
 
-internal static class DFiniteStateMachine
+internal enum Command
 {
-    public static void Transition(StateBase trasnitioningObject, State state)
-    {
-        trasnitioningObject.State = state;
-    }
+    Start,
+    Process,
+    Done
+}
 
-    public static void MoveNext(StateBase transitionObject)
+internal class DFiniteStateMachine
+{
+    private State _state = State.Idle;
+    
+    public void MoveNext(Command command)
     {
-        switch (transitionObject.State)
+        switch (command)
         {
-            case State.Idle:
+            case Command.Start:
                 Console.WriteLine("Starting payment processing...");
-                transitionObject.State = State.Started;
+                _state = State.Started;
                 break;
-            case State.Started:
+            case Command.Process:
                 Console.WriteLine("Payment is processing...");
-                transitionObject.State = State.Processing;
+                _state = State.Processing;
                 break;
-            case State.Processing:
+            case Command.Done:
                 Console.WriteLine("Payment processed.");
-                transitionObject.State = State.Done;
+                _state = State.Done;
                 break;
             default:
                 throw new Exception("Invalid state");
         }
     }
 }
-
-
-abstract class StateBase
-{
-    public State State { get; set; } = State.Idle;
-}
-
-internal sealed class Payment : StateBase { }
