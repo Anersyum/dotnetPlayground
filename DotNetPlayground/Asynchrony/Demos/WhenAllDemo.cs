@@ -1,6 +1,7 @@
 using System.Net.Http.Json;
+using Asynchrony.Helpers;
 
-namespace Asynchrony;
+namespace Asynchrony.Demos;
 
 internal static class WhenAllDemo
 {
@@ -10,14 +11,14 @@ internal static class WhenAllDemo
         {
             Console.WriteLine("Task one started:");
             Task<PokemonData?> espeon = GetPokemonData("golduck");
-    
+
             Console.WriteLine("Task two started:");
             Task<PokemonData?> arcanine = GetPokemonData("arcanine");
 
             Console.WriteLine("Awaiting all to finish:");
             await Task.WhenAll(new Task[] { espeon, arcanine });
             Console.WriteLine("All finished.");
-    
+
             PokemonData?[] data = { espeon.Result, arcanine.Result };
             PokemonTableGenerator.GeneratePokemonTable(data);
         }

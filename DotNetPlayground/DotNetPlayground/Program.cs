@@ -6,6 +6,7 @@ using DotNetPlayground.Repositories;
 using DotNetPlayground.Servisi;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
+using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +23,18 @@ builder.Services.AddCors(option =>
             .AllowAnyHeader();
     });
 });
+
+builder.Services.AddAuthentication("Bearer")
+    .AddJwtBearer("Bearer", options =>
+    {
+        options.Authority = "https://localhost:7095";
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateAudience = false
+        };
+    });
+
+builder.Services.AddAuthorization(opt => opt.AddPolicy("test", p => p.RequireClaim("test", "54545")));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -62,6 +75,10 @@ app.UseCors("allowAngularLocalHost");
 app.UseExceptionHandler("/error");
 //app.UseHttpsRedirection();
 
+
+
+app.UseAuthentication();
+app.UseAuthorization();
 //app.UseAuthorization();
 
 app.MapControllers();

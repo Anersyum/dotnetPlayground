@@ -1,4 +1,4 @@
-namespace Asynchrony;
+namespace Asynchrony.Helpers;
 
 public sealed record PokemonData
 {

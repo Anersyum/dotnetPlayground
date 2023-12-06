@@ -1,18 +1,23 @@
-﻿// await WhenAllDemo.Run(httpClient);
-// await CancellationTokenDemo.Run();
-// AggregateExceptionDemo.Run();
-// await ContinueWithDemo.Run();
+﻿using AwaitablePattern;
 
-// Task task = ExceptionHandler(true);
+Console.WriteLine("Current thread {0}", Thread.CurrentThread.ManagedThreadId);
 
-// Console.WriteLine(task.IsCanceled);
+Entry();
 
-// int numberResult = await AwaitablePatternDemo.Run();
-//
-// Console.WriteLine($"Gotovo sa rezultatom {numberResult}");
+//customTask;
+//customTask.Start();
+//await Task.Delay(4000);
 
-using System.Runtime.CompilerServices;
 
-AsyncTaskMethodBuilder builder = AsyncTaskMethodBuilder.Create();
+static async CustomTask Entry()
+{
+    CustomTask customTask = new(() =>
+    {
+        Thread.Sleep(2000);
+        Console.WriteLine("Inside the action {0}", Thread.CurrentThread.ManagedThreadId);
+    });
 
-builder.AwaitUnsafeOnCompleted();
+    await customTask;
+
+    Console.WriteLine("After CustomTask awaited");
+}

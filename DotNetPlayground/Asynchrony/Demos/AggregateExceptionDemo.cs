@@ -1,4 +1,4 @@
-namespace Asynchrony;
+namespace Asynchrony.Demos;
 
 public static class AggregateExceptionDemo
 {
@@ -22,7 +22,7 @@ public static class AggregateExceptionDemo
     private static void WorkThatThrowsExceptions()
     {
         int delayMillis = Random.Shared.Next(3000, 6000);
-        
+
         Thread.Sleep(delayMillis);
 
         if (delayMillis >= 4500)

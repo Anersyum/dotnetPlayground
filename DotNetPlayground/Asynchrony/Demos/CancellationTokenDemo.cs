@@ -1,4 +1,4 @@
-namespace Asynchrony;
+namespace Asynchrony.Demos;
 
 internal static class CancellationTokenDemo
 {
@@ -29,11 +29,11 @@ internal static class CancellationTokenDemo
             {
                 Console.WriteLine("Dude, I'm canceled...");
             }
-    
+
             Console.WriteLine("Aww maan, I can't have shit...");
         }
     }
-    
+
     private static Task CancelMePlease(CancellationToken cancellationToken)
     {
         cancellationToken.ThrowIfCancellationRequested();

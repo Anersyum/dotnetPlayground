@@ -1,4 +1,4 @@
-namespace Asynchrony;
+namespace Asynchrony.Demos;
 
 public static class ContinueWithDemo
 {

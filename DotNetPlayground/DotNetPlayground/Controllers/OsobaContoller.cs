@@ -3,6 +3,7 @@ using DotNetPlayground.Dto.Osoba;
 using DotNetPlayground.Interfaces;
 using DotNetPlayground.Models;
 using DotNetPlayground.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Cryptography.Xml;
@@ -11,6 +12,7 @@ namespace DotNetPlayground.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Policy = "test")]
     public class OsobaContoller : ControllerBase
     {
         private readonly IOsobaRepository osobaRepository;

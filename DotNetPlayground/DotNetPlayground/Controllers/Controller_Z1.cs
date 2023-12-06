@@ -1,6 +1,10 @@
 ﻿using DotNetPlayground.Classes;
 using DotNetPlayground.Interfaces;
 using DotNetPlayground.Servisi;
+using IdentityModel;
+using IdentityModel.Client;
+using IdentityServer4.Models;
+using IdentityServer4.Services;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -18,6 +22,73 @@ namespace DotNetPlayground.Controllers
         //    KontrolerServis = saberi;
         //    ServisPrviDrugi = drugiServis;
         //}
+
+        [HttpGet("IdentityLogin")]
+        public async Task<IActionResult> Login()
+        {
+            HttpClient client = new();
+
+            var dico = await client.GetDiscoveryDocumentAsync("https://localhost:7095");
+
+            if (dico.IsError) 
+            {
+                return BadRequest("dico");
+            }
+            
+            //client.
+
+            var tokenResponse = await client.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
+            {
+                Address = dico.TokenEndpoint,
+                ClientId = "client",
+                ClientSecret = "secret",
+                Scope = "api1",
+                Parameters =
+                {
+                    { "test", "54545" },
+                    { "UserName", "lskdjfklsdjfl" }
+                },
+                Resource = { "api1" },
+            });
+
+            if (tokenResponse.IsError)
+            {
+                return BadRequest("Tokne");
+            }
+
+            return Ok(tokenResponse.Json);
+        }
+
+        [HttpGet("IdentityLoginNoAuthorize")]
+        public async Task<IActionResult> LoginNoAuthorize()
+        {
+            HttpClient client = new();
+
+            var dico = await client.GetDiscoveryDocumentAsync("https://localhost:7095");
+
+            if (dico.IsError)
+            {
+                return BadRequest("dico");
+            }
+
+            //client.
+
+            var tokenResponse = await client.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
+            {
+                Address = dico.TokenEndpoint,
+                ClientId = "client",
+                ClientSecret = "secret",
+                Scope = "api1",
+            });
+
+            if (tokenResponse.IsError)
+            {
+                return BadRequest("Tokne");
+            }
+
+            return Ok(tokenResponse.Json);
+        }
+
 
         [HttpGet("/HelloWorldGet")]
         public string HelloWorldGet()
