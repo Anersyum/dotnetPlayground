@@ -4,7 +4,8 @@ using FunTimes.TaskVsValueTask;
 
 //BenchmarkRunner.Run<TaskVsValueTaskBenchmark>();
 
-TasksExample tasksExample = new();
+//TasksExample tasksExample = new();
 
-await tasksExample.AwaitValueTaskMultipleTimes();
-await tasksExample.AwaitTaskMultipleTimes();
+//await tasksExample.AwaitValueTaskMultipleTimes();
+//await tasksExample.AwaitTaskMultipleTimes();
+BenchmarkRunner.Run<ExistsVsSpanVsAny>();
